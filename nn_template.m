@@ -10,13 +10,13 @@
 % Code based on ml-class.org Ex.4
 
 % Load data
-load('ex4data1.mat');
-m = size(X, 1);
+% load('ex4data1.mat');
+% m = size(X, 1);
 
-% data = load('dataset_01.txt');
-% X = data(:,1:end-1);
-% y = data(:,end);
-% m = size(X,1);
+data = load('dataset_01.txt');
+X = data(:,1:end-1);
+y = data(:,end);
+m = size(X,1);
 
 
 
