@@ -3,7 +3,8 @@
 % Perform classification for a multi-class dataset using a regularized 3-layer neural network.
 % Learn parameters with fmincg.m.
 %
-% Classes must be designated with digits, starting from 1.
+% Features must be numerical.	
+% Classes must be designated with digits, starting from 1. Every class must be represented in training set.
 % Due to Octave/MATLAB syntax, '0' cannot be used to designate a class.
 %
 % Overview:
@@ -19,20 +20,28 @@
 %
 % Code based on ml-class.org Ex.4
 %
+% Uses Fisher's Iris dataset as an example.
+% Dataset location: http://archive.ics.uci.edu/ml/datasets/Iris
+%
+%
 % To Do:
-%	randomize input rows
+%	randomize dataset before splitting into test/train sets
 %	add confusion matrix for any number of classes; specificity, sensitivity
 %	allow any number of hidden layers
 
-% Load data
-data = load('dataset_05.csv');
+%load data
+data = load('fisher_iris.csv');
 
-%percentage of data to use for training
-train_frac = .70;
+%randomize rows
+order = randperm(size(data,1));
+data = data(order,:);
 
+%separate into features and class
 X = data(:,1:end-1);
 y = data(:,end);
-% m = size(X,1);
+
+%percentage of data to use for training
+train_frac = 0.60;
 
 %split into training and test sets:
 test_rows = round(size(X,1)*(1-train_frac)); %number of rows to use in test set
