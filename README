@@ -1,5 +1,17 @@
-Neural Network Template
+A 3-layer neural network template for classification, implemented in MATLAB and python.
 
-A template neural network developed in MATLAB and python.
+Suitable for continuous independent variables and dependent variable designating 2 or more classes.
+
+Regression parameters are learned by minimizing a cost function with fmincg (MATLAB/Octave).
+
+Splits input data file into training and test sets.
+
+Computes the following performance metrics:
+	Test and training set prediction accuracy
+	Confusion matrix, specificity, sensitivity
 
 Based on Ex.4 of ml-class.org.
+
+Files:
+nn_template.m: MATLAB/Octave implementation script.
+sigmoid.m, sigmoidGradient.m, randInitializeWeights.m, nnCostFunction.m, fmincg.m, predict.m: functions used by main .m script
