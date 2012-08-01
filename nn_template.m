@@ -3,10 +3,13 @@
 % Perform classification for a multi-class dataset using a regularized 3-layer neural network.
 % Learn parameters with fmincg.m.
 %
+% Classes must be designated with digits, starting from 1.
+% Due to Octave/MATLAB syntax, '0' cannot be used to designate a class.
+%
 % Overview:
 %	Read in comma-delimited data file (without header)
 %	Split into training and test set
-%	Specify NN parameters
+%	Specify NN parameters (initialize random weights)
 %	Minimize cost function with fmincg
 %	Compute performance metrics:
 %		prediction accuracy on training and test sets
@@ -17,18 +20,15 @@
 % Code based on ml-class.org Ex.4
 %
 % To Do:
-%   split data into training and test sets
 %	randomize input rows
-%	prediction accuracy on test and training sets
-%	add confusion matrix for any number of classes, specificity, sensitivity
+%	add confusion matrix for any number of classes; specificity, sensitivity
 %	allow any number of hidden layers
 
 % Load data
-data = load('dataset_01.txt');
+data = load('dataset_05.csv');
 
 %percentage of data to use for training
 train_frac = .70;
-
 
 X = data(:,1:end-1);
 y = data(:,end);
@@ -40,10 +40,9 @@ X_test = X(1:test_rows,:); y_test = y(1:test_rows,:);%this is the test set
 X = X(test_rows+1:end,:); y = y(test_rows+1:end,:);%this is the training set
 m = size(X,1);
 
-
 %NN layer sizes
 input_layer_size = size(X,2);
-hidden_layer_size = 25;
+hidden_layer_size = 10;
 num_labels = size(unique(y),1); %output layer
 
 %Initialize NN Parameters for the 3-layer NN
