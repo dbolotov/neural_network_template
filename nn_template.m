@@ -1,14 +1,26 @@
 % NN_TEMPLATE is a template 3-layer neural network for classification.
 %
-% Functions used:
-%	sigmoid.m
-%	sigmoidGradient.m
-%	randInitializeWeights.m
-%	nnCostFunction.m
-%	fmincg.m
-%	predict.m
+% Perform classification for a multi-class dataset using a neural network.
+% Learn parameters with fmincg.m.
+%
+% Overview:
+%	Read in comma-delimited data file (without header)
+%	Split into training and test set
+%	Specify NN parameters
+%	Minimize cost function with fmincg
+%	Compute performance metrics:
+%		prediction accuracy on training and test sets
+%		confusion matrix, sensitivity, specificity
+%
+% Functions used: sigmoid.m, sigmoidGradient.m, randInitializeWeights.m, nnCostFunction.m, fmincg.m, predict.m
 %
 % Code based on ml-class.org Ex.4
+%
+% To Do:
+%   split data into training and test sets
+%	prediction accuracy on test and training sets
+%	add confusion matrix for any number of classes, specificity, sensitivity
+%	allow any number of hidden layers
 
 % Load data
 data = load('dataset_01.txt');
