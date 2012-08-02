@@ -1,6 +1,15 @@
 A 3-layer neural network template for classification, implemented in MATLAB and python.
 
-Suitable for continuous independent variables and dependent variable designating 2 or more classes.
+Suitable for data with continuous independent variables and a dependent variable designating 2 or more classes.
+
+Each data row must be complete (no missing values).
+
+Features must be numerical.	
+Classes must be designated with consecutive integers, starting from 1 (Ex: {1,2,3,4} but not {1,2,4}). 
+Every class must be represented in training set.
+Due to Octave/MATLAB syntax, '0' cannot be used to designate a class.
+
+Output layer uses sigmoid as activation function.
 
 Regression parameters are learned by minimizing a cost function with fmincg (MATLAB/Octave).
 
@@ -11,6 +20,11 @@ Computes the following performance metrics:
 	Confusion matrix, specificity, sensitivity
 
 Based on Ex.4 of ml-class.org.
+
+Datasets used:
+Fisher's Iris: http://archive.ics.uci.edu/ml/datasets/Iris
+Wine quality: http://archive.ics.uci.edu/ml/datasets/Wine+Quality
+Note: class variables have been recoded to accomodate MATLAB/Octave syntax.
 
 Files:
 nn_template.m: MATLAB/Octave implementation script.
