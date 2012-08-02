@@ -4,7 +4,8 @@
 % Learn parameters with fmincg.m.
 %
 % Features must be numerical.	
-% Classes must be designated with digits, starting from 1. Every class must be represented in training set.
+% Classes must be designated with consecutive integers, starting from 1 (Ex: {1,2,3,4} but not {1,2,4}). 
+% Every class must be represented in training set.
 % Due to Octave/MATLAB syntax, '0' cannot be used to designate a class.
 %
 % Overview:
@@ -20,17 +21,19 @@
 %
 % Code based on ml-class.org Ex.4
 %
-% Uses Fisher's Iris dataset as an example.
-% Dataset location: http://archive.ics.uci.edu/ml/datasets/Iris
-%
+% Datasets used:
+% Fisher's Iris: http://archive.ics.uci.edu/ml/datasets/Iris
+% Wine quality: http://archive.ics.uci.edu/ml/datasets/Wine+Quality
+% Note: labels of "0" in these datasets have been replaced with non-zero values to accomodate MATLAB/Octave syntax
 %
 % To Do:
+%	Test on dataset with added noise
 %	randomize dataset before splitting into test/train sets
 %	add confusion matrix for any number of classes; specificity, sensitivity
 %	allow any number of hidden layers
 
 %load data
-data = load('fisher_iris.csv');
+data = load('winequality-red.csv');
 
 %randomize rows
 order = randperm(size(data,1));
@@ -41,7 +44,7 @@ X = data(:,1:end-1);
 y = data(:,end);
 
 %percentage of data to use for training
-train_frac = 0.60;
+train_frac = 0.80;
 
 %split into training and test sets:
 test_rows = round(size(X,1)*(1-train_frac)); %number of rows to use in test set
@@ -51,7 +54,7 @@ m = size(X,1);
 
 %NN layer sizes
 input_layer_size = size(X,2);
-hidden_layer_size = 10;
+hidden_layer_size = 40;
 num_labels = size(unique(y),1); %output layer
 
 %Initialize NN Parameters for the 3-layer NN
@@ -66,7 +69,7 @@ fprintf('\nTraining Neural Network... \n')
 
 % Set options for fmincg
 options = optimset('MaxIter', 400);
-lambda = 0.0;
+lambda = 1.0;
 
 costFunction = @(p) nnCostFunction(p, ...
                                    input_layer_size, ...
