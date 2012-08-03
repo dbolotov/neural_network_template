@@ -23,7 +23,7 @@ Based on Ex.4 of ml-class.org.
 
 Datasets used:
 Fisher's Iris: http://archive.ics.uci.edu/ml/datasets/Iris
-Wine quality: http://archive.ics.uci.edu/ml/datasets/Wine+Quality
+Wine: http://archive.ics.uci.edu/ml/datasets/Wine
 Note: class variables have been recoded to accomodate MATLAB/Octave syntax.
 
 Files:
