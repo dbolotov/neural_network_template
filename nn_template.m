@@ -44,7 +44,7 @@ X = data(:,1:end-1);
 y = data(:,end);
 
 %percentage of data to use for training
-train_frac = 0.75;
+train_frac = 0.80;
 
 %split into training and test sets:
 test_rows = round(size(X,1)*(1-train_frac)); %number of rows to use in test set
@@ -54,7 +54,7 @@ m = size(X,1);
 
 %NN layer sizes
 input_layer_size = size(X,2);
-hidden_layer_size = 20;
+hidden_layer_size = 40;
 num_labels = size(unique(y),1); %output layer
 
 %Initialize NN Parameters for the 3-layer NN
