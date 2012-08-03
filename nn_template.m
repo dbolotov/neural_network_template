@@ -23,7 +23,7 @@
 %
 % Datasets used:
 % Fisher's Iris: http://archive.ics.uci.edu/ml/datasets/Iris
-% Wine quality: http://archive.ics.uci.edu/ml/datasets/Wine+Quality
+% Wine: http://archive.ics.uci.edu/ml/datasets/Wine
 % Note: labels of "0" in these datasets have been replaced with non-zero values to accomodate MATLAB/Octave syntax
 %
 % To Do:
@@ -33,7 +33,7 @@
 %	allow any number of hidden layers
 
 %load data
-data = load('winequality_red.csv');
+data = load('wine.csv');
 
 %randomize rows
 order = randperm(size(data,1));
@@ -44,7 +44,7 @@ X = data(:,1:end-1);
 y = data(:,end);
 
 %percentage of data to use for training
-train_frac = 0.95;
+train_frac = 0.75;
 
 %split into training and test sets:
 test_rows = round(size(X,1)*(1-train_frac)); %number of rows to use in test set
@@ -54,7 +54,7 @@ m = size(X,1);
 
 %NN layer sizes
 input_layer_size = size(X,2);
-hidden_layer_size = 50;
+hidden_layer_size = 20;
 num_labels = size(unique(y),1); %output layer
 
 %Initialize NN Parameters for the 3-layer NN
