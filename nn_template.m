@@ -15,25 +15,23 @@
 %	Minimize cost function with fmincg
 %	Compute performance metrics:
 %		prediction accuracy on training and test sets
-%		confusion matrix, sensitivity, specificity
 %
 % Functions used: sigmoid.m, sigmoidGradient.m, randInitializeWeights.m, nnCostFunction.m, fmincg.m, predict.m
 %
 % Code based on ml-class.org Ex.4
 %
 % Datasets used:
-% Fisher's Iris: http://archive.ics.uci.edu/ml/datasets/Iris
-% Wine: http://archive.ics.uci.edu/ml/datasets/Wine
-% Note: labels of "0" in these datasets have been replaced with non-zero values to accomodate MATLAB/Octave syntax
+%	Fisher's Iris: http://archive.ics.uci.edu/ml/datasets/Iris
+%	Wine: http://archive.ics.uci.edu/ml/datasets/Wine
+%	Glass Identification: http://archive.ics.uci.edu/ml/datasets/Glass+Identification
 %
-% To Do:
-%	Test on dataset with added noise
-%	randomize dataset before splitting into test/train sets
-%	add confusion matrix for any number of classes; specificity, sensitivity
-%	allow any number of hidden layers
+%	Dataset processing steps: labels of "0" in these datasets have been replaced with non-zero values 
+%	to accomodate MATLAB/Octave syntax. Classes in Wine dataset were relabeled to consecutive integers.
+%	The class column has been moved to the last column in the dataset.
+
 
 %load data
-data = load('wine.csv');
+data = load('glass_identification_2classes.csv');
 
 %randomize rows
 order = randperm(size(data,1));
@@ -44,7 +42,7 @@ X = data(:,1:end-1);
 y = data(:,end);
 
 %percentage of data to use for training
-train_frac = 0.80;
+train_frac = 0.85;
 
 %split into training and test sets:
 test_rows = round(size(X,1)*(1-train_frac)); %number of rows to use in test set
@@ -68,7 +66,7 @@ initial_nn_params = [initial_Theta1(:) ; initial_Theta2(:)];
 fprintf('\nTraining Neural Network... \n')
 
 % Set options for fmincg
-options = optimset('MaxIter', 400);
+options = optimset('MaxIter', 1000);
 lambda = 1.0;
 
 costFunction = @(p) nnCostFunction(p, ...
@@ -84,10 +82,6 @@ Theta1 = reshape(nn_params(1:hidden_layer_size * (input_layer_size + 1)), ...
 
 Theta2 = reshape(nn_params((1 + (hidden_layer_size * (input_layer_size + 1))):end), ...
                  num_labels, (hidden_layer_size + 1));
-
-%Find training set accuracy
-% pred = predict(Theta1, Theta2, X);
-% fprintf('\nTraining Set Accuracy: %f\n', mean(double(pred == y)) * 100);
 
 p_train = predict(Theta1, Theta2, X);
 fprintf('\nTraining Set Accuracy: %f\n', mean(double(p_train == y)) * 100);
