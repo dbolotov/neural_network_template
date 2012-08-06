@@ -1,7 +1,7 @@
 % NN_TEMPLATE is a template neural network for classification.
 %
 % Perform classification for a multi-class dataset using a regularized 3-layer neural network.
-% Learn parameters with fmincg.m.
+% Learn parameters with fmincg.m or fminunc.m (uncomment respective sections to use one or the other method)
 %
 % Features must be numerical.	
 % Classes must be designated with consecutive integers, starting from 1 (Ex: {1,2,3,4} but not {1,2,4}). 
@@ -31,7 +31,7 @@
 
 
 %load data
-data = load('glass_identification_2classes.csv');
+data = load('wine.csv');
 
 %randomize rows
 order = randperm(size(data,1));
@@ -42,7 +42,7 @@ X = data(:,1:end-1);
 y = data(:,end);
 
 %percentage of data to use for training
-train_frac = 0.85;
+train_frac = 0.75;
 
 %split into training and test sets:
 test_rows = round(size(X,1)*(1-train_frac)); %number of rows to use in test set
@@ -65,16 +65,26 @@ initial_nn_params = [initial_Theta1(:) ; initial_Theta2(:)];
 % Implement backprop and train network using fmincg
 fprintf('\nTraining Neural Network... \n')
 
-% Set options for fmincg
-options = optimset('MaxIter', 1000);
+% % Set options for fmincg
+% options = optimset('MaxIter', 400);
+% lambda = 1.0;
+
+% costFunction = @(p) nnCostFunction(p, input_layer_size, hidden_layer_size, num_labels, X, y, lambda);
+
+% % Get paramaters using fmincg						
+% [nn_params, cost] = fmincg(costFunction, initial_nn_params, options);
+
+
+
+% Set options for fminunc
+options = optimset('GradObj', 'on', 'MaxIter', 400);
 lambda = 1.0;
+costFunction = @(p) nnCostFunction(p, input_layer_size, hidden_layer_size, num_labels, X, y, lambda);
 
-costFunction = @(p) nnCostFunction(p, ...
-                                   input_layer_size, ...
-                                   hidden_layer_size, ...
-                                   num_labels, X, y, lambda);
+% Get parameters using fminunc
+[nn_params, cost] = fminunc(costFunction, initial_nn_params, options);
 
-[nn_params, cost] = fmincg(costFunction, initial_nn_params, options);
+
 
 % Obtain Theta1 and Theta2 back from nn_params
 Theta1 = reshape(nn_params(1:hidden_layer_size * (input_layer_size + 1)), ...
