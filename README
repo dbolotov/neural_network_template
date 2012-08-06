@@ -11,7 +11,7 @@ Due to Octave/MATLAB syntax, '0' cannot be used to designate a class.
 
 Output layer uses sigmoid as activation function.
 
-Regression parameters are learned by minimizing a cost function with fmincg (MATLAB/Octave).
+Regression parameters are learned by minimizing a cost function with fmincg or fminunc (MATLAB/Octave).
 
 Splits input data file into training and test sets.
 
