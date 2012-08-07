@@ -31,13 +31,20 @@ def randInitializeWeights(L_in, L_out):
 	epsilon_init = float(sqrt(6))/sqrt(L_in + L_out)
 	return random.rand(L_out, 1 + L_in) * 2 * epsilon_init - epsilon_init
 
-def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X, y, lambda):
+def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X, y, lam):
 	#code
 	
 	return 0
 
-def predict(z):
-	return 0
+def predict(Theta1, Theta2, X):
+	m = X.shape[0]
+	num_labels = size(Theta2,1)
+
+	h1 = sigmoid((c_[np.ones(m), X]) * np.transpose(Theta1)) 
+	h2 = sigmoid((c_[np.ones(m), h1]) * np.transpose(Theta2))
+	
+	#assign each row of output  to be max of each row of h2
+	return h2.max(1)
 
 
 #procedure
