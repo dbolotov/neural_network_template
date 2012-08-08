@@ -83,8 +83,11 @@ initial_Theta1 = randInitializeWeights(input_layer_size, hidden_layer_size)
 initial_Theta2 = randInitializeWeights(hidden_layer_size, num_labels)
 
 # Unroll parameters
-initial_nn_params = [initial_Theta1.flatten(1) initial_Theta2.flatten(1)]
-
+#need to convert to _ by 1 array?
+initial_nn_params = np.append(initial_Theta1.flatten(1), initial_Theta2.flatten(1))
+initial_nn_params = reshape(initial_nn_params,(len(initial_nn_params),1))
+# Implement backprop and train network
+print 'Training Neural Network...'
 
 
 
