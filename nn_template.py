@@ -8,7 +8,7 @@
 #Code is based on ml-class.org, Ex.4.
 
 import sys, numpy as np
-from numpy import mat, c_, r_, array, e, reshape, random, sqrt, unique, zeros
+from numpy import mat, c_, r_, array, e, reshape, random, sqrt, unique, zeros, eye
 from scipy import optimize as op
 import itertools
 
@@ -40,10 +40,15 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
 	m = X.shape[0]
 	n = X.shape[1]
 	
-	
+	y_eye = eye(num_labels)
+	y_new = np.zeros((y.shape[0],num_labels))
+
+	for z in range(y.shape[0]):
+		y_new[z,:] = y_eye[int(y[z])]
+		#return y_new 
 
 
-	return Theta1,Theta2
+	return Theta1,Theta2, y_new
 
 
 
@@ -66,7 +71,7 @@ def predict(Theta1, Theta2, X):
 data = np.loadtxt('fisher_iris.csv', delimiter = ',')
 
 # shuffle rows
-random.shuffle(data)
+#random.shuffle(data)
 
 # separate into features and class
 X = array(data[:,:-1])
