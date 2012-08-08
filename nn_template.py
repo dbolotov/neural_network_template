@@ -8,7 +8,7 @@
 #Code is based on ml-class.org, Ex.4.
 
 import sys, numpy as np
-from numpy import mat, c_, r_, array, e, reshape, random, sqrt, unique
+from numpy import mat, c_, r_, array, e, reshape, random, sqrt, unique, zeros
 from scipy import optimize as op
 import itertools
 
@@ -32,9 +32,21 @@ def randInitializeWeights(L_in, L_out):
 	return random.rand(L_out, 1 + L_in) * 2 * epsilon_init - epsilon_init
 
 def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X, y, lam):
-	#code
 	
-	return 0
+	Theta1 = (reshape(nn_params[:(hidden_layer_size*(input_layer_size+1))],(hidden_layer_size,(input_layer_size+1))))
+	
+	Theta2 = (reshape(nn_params[((hidden_layer_size*(input_layer_size+1))):],(num_labels, (hidden_layer_size+1))))
+
+	m = X.shape[0]
+	n = X.shape[1]
+	
+	
+
+
+	return Theta1,Theta2
+
+
+
 
 def predict(Theta1, Theta2, X):
 	m = X.shape[0]
@@ -51,7 +63,7 @@ def predict(Theta1, Theta2, X):
 
 # Input: feature columns followed by dependent class column
 
-data = np.loadtxt('wine.csv', delimiter = ',')
+data = np.loadtxt('fisher_iris.csv', delimiter = ',')
 
 # shuffle rows
 random.shuffle(data)
@@ -79,17 +91,27 @@ hidden_layer_size = 40
 num_labels = unique(y).shape[0] #output layer
 
 # Initialize NN parameters
-initial_Theta1 = randInitializeWeights(input_layer_size, hidden_layer_size)
-initial_Theta2 = randInitializeWeights(hidden_layer_size, num_labels)
+#initial_Theta1 = randInitializeWeights(input_layer_size, hidden_layer_size)
+#initial_Theta2 = randInitializeWeights(hidden_layer_size, num_labels)
+
+initial_Theta1 = zeros((hidden_layer_size, 1+input_layer_size))
+initial_Theta2 = zeros((num_labels, 1+hidden_layer_size))
+
 
 # Unroll parameters
-#need to convert to _ by 1 array?
 initial_nn_params = np.append(initial_Theta1.flatten(1), initial_Theta2.flatten(1))
 initial_nn_params = reshape(initial_nn_params,(len(initial_nn_params),1))
 # Implement backprop and train network
 print 'Training Neural Network...'
 
+# Set options for fmin
+options = {'full_output':True, 'maxiter':400}
+lam = 1.0
 
+sys.exit()
+# Run fmin
+print 'fmin results:'
+nn_params, cost, _, _, _  = op.fmin(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, **options)
 
 
 
