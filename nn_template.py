@@ -78,7 +78,12 @@ input_layer_size = X.shape[1]
 hidden_layer_size = 40
 num_labels = unique(y).shape[0] #output layer
 
+# Initialize NN parameters
+initial_Theta1 = randInitializeWeights(input_layer_size, hidden_layer_size)
+initial_Theta2 = randInitializeWeights(hidden_layer_size, num_labels)
 
+# Unroll parameters
+initial_nn_params = [initial_Theta1.flatten(1) initial_Theta2.flatten(1)]
 
 
 
