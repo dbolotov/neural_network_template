@@ -8,7 +8,7 @@
 #Code is based on ml-class.org, Ex.4.
 
 import sys, numpy as np
-from numpy import mat, c_, r_, array, e, reshape, random, sqrt
+from numpy import mat, c_, r_, array, e, reshape, random, sqrt, unique
 from scipy import optimize as op
 import itertools
 
@@ -47,7 +47,36 @@ def predict(Theta1, Theta2, X):
 	return h2.max(1)
 
 
-#procedure
+# Neural Network script
+
+# Input: feature columns followed by dependent class column
+
+data = np.loadtxt('wine.csv', delimiter = ',')
+
+# shuffle rows
+random.shuffle(data)
+
+# separate into features and class
+X = array(data[:,:-1])
+y = array(data[:,-1])
+y = reshape(y,(len(y),1)) #reshape into 1 by len(y) array
+
+train_frac = 0.75 #fraction of data to use for training
+
+# Split input file into training and test files
+test_rows = int(round(X.shape[0] * (1 - train_frac))) #num of rows in test set
+X_test = X[:test_rows, :] #test set
+y_test = y[:test_rows] #test set
+
+X = X[test_rows:,:] #training set
+y = y[test_rows:] #training set
+
+m = X.shape[0]
+
+# NN layer sizes
+input_layer_size = X.shape[1]
+hidden_layer_size = 40
+num_labels = unique(y).shape[0] #output layer
 
 
 
