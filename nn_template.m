@@ -62,13 +62,12 @@ initial_Theta2 = randInitializeWeights(hidden_layer_size, num_labels);
 % Unroll parameters
 initial_nn_params = [initial_Theta1(:) ; initial_Theta2(:)];
 
-% Implement backprop and train network using fmincg
+% Implement backprop and train network using fmincg or fminunc
 fprintf('\nTraining Neural Network... \n')
 
 % % Set options for fmincg
 % options = optimset('MaxIter', 400);
 % lambda = 1.0;
-
 % costFunction = @(p) nnCostFunction(p, input_layer_size, hidden_layer_size, num_labels, X, y, lambda);
 
 % % Get paramaters using fmincg						
