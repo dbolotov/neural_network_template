@@ -8,7 +8,8 @@
 #Code is based on ml-class.org, Ex.4.
 
 import sys, numpy as np
-from numpy import mat, c_, r_, array, e, reshape, random, sqrt, unique, zeros, eye
+from numpy import mat, ones, c_, r_, array, e, reshape, random, sqrt, unique, zeros, eye
+from numpy import transpose as tr
 from scipy import optimize as op
 import itertools
 
@@ -40,15 +41,23 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
 	m = X.shape[0]
 	n = X.shape[1]
 	
+	#forward pass
 	y_eye = eye(num_labels)
 	y_new = np.zeros((y.shape[0],num_labels))
 
 	for z in range(y.shape[0]):
-		y_new[z,:] = y_eye[int(y[z])]
-		#return y_new 
+		y_new[z,:] = y_eye[int(y[z])-1]
+	
+	a_1 = c_[ones((m,1)),X]
+	
+	z_2 = tr(Theta1.dot(tr(a_1)))
 
 
-	return Theta1,Theta2, y_new
+
+
+
+
+	return Theta1,Theta2, y_new, a_1, z_2
 
 
 
@@ -78,7 +87,7 @@ X = array(data[:,:-1])
 y = array(data[:,-1])
 y = reshape(y,(len(y),1)) #reshape into 1 by len(y) array
 
-train_frac = 0.75 #fraction of data to use for training
+train_frac = 0.85 #fraction of data to use for training
 
 # Split input file into training and test files
 test_rows = int(round(X.shape[0] * (1 - train_frac))) #num of rows in test set
