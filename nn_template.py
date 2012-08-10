@@ -8,7 +8,7 @@
 #Code is based on ml-class.org, Ex.4.
 
 import sys, numpy as np
-from numpy import mat, ones, c_, r_, array, e, reshape, random, sqrt, unique, zeros, eye
+from numpy import log, ones, c_, r_, array, e, reshape, random, sqrt, unique, zeros, eye
 from numpy import transpose as tr
 from scipy import optimize as op
 import itertools
@@ -51,6 +51,19 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
 	a_1 = c_[ones((m,1)),X]
 	
 	z_2 = tr(Theta1.dot(tr(a_1)))
+	
+	a_2 = tr(sigmoid(Theta1.dot(tr(a_1))))
+
+	a_2 = c_[ones((a_2.shape[0],1)), a_2]
+
+	a_3 = tr(sigmoid(Theta2.dot(tr(a_2))))
+
+	J_reg = lam/(2.*m) * (sum(sum(Theta1[:,1:]**2)) + sum(sum(Theta2[:,1:]**2)))
+
+	J = (1./m) * sum(sum(-y*log(a_3) - (1-y)*log(1-a_3))) + J_reg
+
+	#Backprop
+
 
 
 
