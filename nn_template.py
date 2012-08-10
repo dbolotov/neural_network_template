@@ -8,7 +8,7 @@
 #Code is based on ml-class.org, Ex.4.
 
 import sys, numpy as np
-from numpy import log, ones, c_, r_, array, e, reshape, random, sqrt, unique, zeros, eye
+from numpy import ravel, log, ones, c_, r_, array, e, reshape, random, sqrt, unique, zeros, eye
 from numpy import transpose as tr
 from scipy import optimize as op
 import itertools
@@ -80,14 +80,9 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
 	Theta2_grad[:,1:] = Theta2_grad[:,1:] + lam*1.0/m*Theta2[:,1:]
 
 	#Unroll gradients
-	
-	grad = c_[Theta1_grad.reshape(1,Theta1_grad.size), Theta2_grad.reshape(1,Theta2_grad.size)]
+	grad = tr(c_[Theta1_grad.swapaxes(1,0).reshape(1,-1), Theta2_grad.swapaxes(1,0).reshape(1,-1)])
 
-
-
-
-
-	return Theta1,Theta2, y, a_1, z_2, d_3, a_3
+	return Theta1,Theta2, y, a_1, z_2, d_3, a_3, J, grad, Theta1_grad, Theta2_grad
 
 
 
