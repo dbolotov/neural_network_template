@@ -22,10 +22,11 @@ def sigmoid(z):
 
 def sigmoidGradient(z):
 	#must convert to array first
-	if type(z) != 'numpy.ndarray':
+	if type(z) != np.ndarray:
 		z = array([z])
 	f = 1./(1 + e**(-z))
-	return f*(np.ones(f.shape[0]) - f)
+	#return f*(np.ones(f.shape[0]) - f)
+	return f*(1-f)
 
 def randInitializeWeights(L_in, L_out):
 	#epsilon_init = 0.12
@@ -43,7 +44,8 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
 	
 	#forward pass
 	y_eye = eye(num_labels)
-	y_new = np.zeros((y.shape[0],num_labels))
+	#y_new = np.zeros((y.shape[0],num_labels))
+	y = np.zeros((y.shape[0], num_labels))
 
 	for z in range(y.shape[0]):
 		y_new[z,:] = y_eye[int(y[z])-1]
@@ -64,13 +66,22 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
 
 	#Backprop
 
+	d_3 = a_3 - y
+	
+	d_2 = (d_3*Theta2[:,1:])*sigmoidGradient(z_2)
+
+	Theta1_grad = 1./m * tr(d_2) * a_1
+	Theta2_grad = 1./m * tr(d_3) * a_2
+
+	#Add regularization
 
 
 
 
 
 
-	return Theta1,Theta2, y_new, a_1, z_2
+
+	return Theta1,Theta2, y, a_1, z_2, d_3, a_3
 
 
 
