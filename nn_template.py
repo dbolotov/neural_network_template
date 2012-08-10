@@ -44,12 +44,13 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
 	
 	#forward pass
 	y_eye = eye(num_labels)
-	#y_new = np.zeros((y.shape[0],num_labels))
-	y = np.zeros((y.shape[0], num_labels))
+	y_new = np.zeros((y.shape[0],num_labels))
 
 	for z in range(y.shape[0]):
 		y_new[z,:] = y_eye[int(y[z])-1]
 	
+	y = y_new
+
 	a_1 = c_[ones((m,1)),X]
 	
 	z_2 = tr(Theta1.dot(tr(a_1)))
@@ -68,14 +69,19 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
 
 	d_3 = a_3 - y
 	
-	d_2 = (d_3*Theta2[:,1:])*sigmoidGradient(z_2)
+	d_2 = d_3.dot(Theta2[:,1:])*sigmoidGradient(z_2)
 
-	Theta1_grad = 1./m * tr(d_2) * a_1
-	Theta2_grad = 1./m * tr(d_3) * a_2
+	Theta1_grad = 1./m * tr(d_2).dot(a_1)
+	Theta2_grad = 1./m * tr(d_3).dot(a_2)
 
 	#Add regularization
 
+	Theta1_grad[:,1:] = Theta1_grad[:,1:] + lam*1.0/m*Theta1[:,1:]
+	Theta2_grad[:,1:] = Theta2_grad[:,1:] + lam*1.0/m*Theta2[:,1:]
 
+	#Unroll gradients
+	
+	grad = c_[Theta1_grad.reshape(1,Theta1_grad.size), Theta2_grad.reshape(1,Theta2_grad.size)]
 
 
 
