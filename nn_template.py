@@ -8,7 +8,7 @@
 #Code is based on ml-class.org, Ex.4.
 
 import sys, numpy as np
-from numpy import ravel, log, ones, c_, r_, array, e, reshape, random, sqrt, unique, zeros, eye
+from numpy import log, ones, c_, r_, array, e, reshape, random, sqrt, unique, zeros, eye
 from numpy import transpose as tr
 from scipy import optimize as op
 import itertools
@@ -82,7 +82,9 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
 	#Unroll gradients
 	grad = tr(c_[Theta1_grad.swapaxes(1,0).reshape(1,-1), Theta2_grad.swapaxes(1,0).reshape(1,-1)])
 
-	return Theta1,Theta2, y, a_1, z_2, d_3, a_3, J, grad, Theta1_grad, Theta2_grad
+	#return Theta1,Theta2, y, a_1, z_2, d_3, a_3, J, grad, Theta1_grad, Theta2_grad
+	#optimize.fmin expects a single value, so cannot return grad
+	return J #,grad
 
 
 
@@ -133,24 +135,26 @@ num_labels = unique(y).shape[0] #output layer
 #initial_Theta1 = randInitializeWeights(input_layer_size, hidden_layer_size)
 #initial_Theta2 = randInitializeWeights(hidden_layer_size, num_labels)
 
-initial_Theta1 = zeros((hidden_layer_size, 1+input_layer_size))
-initial_Theta2 = zeros((num_labels, 1+hidden_layer_size))
+initial_Theta1 = 0.5*ones((hidden_layer_size, 1+input_layer_size))
+initial_Theta2 = 0.5*ones((num_labels, 1+hidden_layer_size))
 
 
 # Unroll parameters
 initial_nn_params = np.append(initial_Theta1.flatten(1), initial_Theta2.flatten(1))
-initial_nn_params = reshape(initial_nn_params,(len(initial_nn_params),1))
+initial_nn_params = reshape(initial_nn_params,(len(initial_nn_params),)) #flatten into 1-d array
+
 # Implement backprop and train network
 print 'Training Neural Network...'
 
 # Set options for fmin
-options = {'full_output':True, 'maxiter':400}
+#options = {'full_output':True, 'maxiter':1400}
+options = {'full_output':True}
 lam = 1.0
 
-sys.exit()
+#sys.exit()
 # Run fmin
 print 'fmin results:'
-nn_params, cost, _, _, _  = op.fmin(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, **options)
+nn_params, cost, _, _, _  = op.fmin_ncg(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, **options)
 
 
 
