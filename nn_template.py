@@ -29,8 +29,8 @@ def sigmoidGradient(z):
 	return f*(1-f)
 
 def randInitializeWeights(L_in, L_out):
-	#epsilon_init = 0.12
-	epsilon_init = float(sqrt(6))/sqrt(L_in + L_out)
+	epsilon_init = 0.12
+	#epsilon_init = float(sqrt(6))/sqrt(L_in + L_out)
 	return random.rand(L_out, 1 + L_in) * 2 * epsilon_init - epsilon_init
 
 def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X, y, lam):
@@ -147,14 +147,14 @@ initial_nn_params = reshape(initial_nn_params,(len(initial_nn_params),)) #flatte
 print 'Training Neural Network...'
 
 # Set options for fmin
-#options = {'full_output':True, 'maxiter':1400}
-options = {'full_output':True}
+options = {'full_output':True, 'maxiter':500}
+#options = {'full_output':True}
 lam = 1.0
 
 #sys.exit()
 # Run fmin
 print 'fmin results:'
-nn_params, cost, _, _, _  = op.fmin_ncg(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, **options)
+nn_params, cost, _, _, _  = op.fmin(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, **options)
 
 
 
