@@ -32,5 +32,8 @@ Dataset processing steps:
 	The class column has been moved to the last column in the dataset.
 
 Files:
-nn_template.m: MATLAB/Octave implementation script.
+
+nn_template.py: python implementation script (does not converge)
+
+nn_template.m: MATLAB/Octave implementation script (working)
 sigmoid.m, sigmoidGradient.m, randInitializeWeights.m, nnCostFunction.m, fmincg.m, predict.m: functions used by main .m script
