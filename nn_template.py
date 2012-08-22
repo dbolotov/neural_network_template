@@ -152,7 +152,7 @@ options = {'full_output':True, 'maxiter':500}
 lam = 1.0
 
 #sys.exit()
-# Run fmin
+# Run fmin - does not converge
 print 'fmin results:'
 nn_params, cost, _, _, _  = op.fmin(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, **options)
 
