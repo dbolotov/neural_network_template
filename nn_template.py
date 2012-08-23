@@ -157,8 +157,10 @@ lam = 1.0
 print 'fmin results:'
 #nn_params, cost, _, _, _  = op.fmin(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, **options)
 
-nn_params, cost, _, _, _  = op.fmin(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, xtol = 0.01, ftol = 0.01, maxiter = 5000, full_output=1)
+#nn_params, cost, _, _, _  = op.fmin(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, xtol = 0.01, ftol = 0.01, maxiter = 5000, full_output=1)
 
+
+nn_params, cost, _, _, _  = op.fmin_cg(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, gtol = 0.001, maxiter = 50, full_output=1)
 
 
 
