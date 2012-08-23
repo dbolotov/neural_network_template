@@ -7,12 +7,13 @@
 
 #Code is based on ml-class.org, Ex.4.
 
-import sys, numpy as np
+import sys, numpy as np, scipy as sp
 from numpy import log, ones, c_, r_, array, e, reshape, random, sqrt, unique, zeros, eye
 from numpy import transpose as tr
 from scipy import optimize as op
 import itertools
 
+#sys.exit()
 
 # Define functions
 
@@ -147,14 +148,16 @@ initial_nn_params = reshape(initial_nn_params,(len(initial_nn_params),)) #flatte
 print 'Training Neural Network...'
 
 # Set options for fmin
-options = {'full_output':True, 'maxiter':500}
+options = {'full_output':True, 'maxiter':50000}
 #options = {'full_output':True}
 lam = 1.0
 
 #sys.exit()
 # Run fmin - does not converge
 print 'fmin results:'
-nn_params, cost, _, _, _  = op.fmin(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, **options)
+#nn_params, cost, _, _, _  = op.fmin(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, **options)
+
+nn_params, cost, _, _, _  = op.fmin(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, xtol = 0.01, ftol = 0.01, maxiter = 5000, full_output=1)
 
 
 
