@@ -95,7 +95,8 @@ def predict(Theta1, Theta2, X): #compute prediction of y
 	h2 = sigmoid(c_[np.ones(m), h1].dot(np.transpose(Theta2)))
 	
 	#assign each row of output  to be max of each row of h2
-	return h2.argmax(1)+1
+	y_hat = h2.argmax(1)+1
+	return reshape(y_hat, (len(y_hat),1))
 
 def pred_accuracy(Theta1, Theta2, X, y):
 	p = predict(Theta1, Theta2, X)
@@ -157,7 +158,7 @@ print 'fmin results:'
 
 #nn_params, cost, _, _, _  = op.fmin(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, xtol = 0.01, ftol = 0.01, maxiter = 500, full_output=1)
 
-nn_params, cost, _, _, _  = op.fmin_cg(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, gtol = 0.001, maxiter = 5, full_output=1)
+nn_params, cost, _, _, _  = op.fmin_cg(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, gtol = 0.001, maxiter = 20, full_output=1)
 	
 
 Theta1 = (reshape(nn_params[:(hidden_layer_size*(input_layer_size+1))],(hidden_layer_size,(input_layer_size+1))))
@@ -171,7 +172,7 @@ p_test = pred_accuracy(Theta1, Theta2, X_test, y_test)
 print '\nAccuracy on training set: %g' % p_train
 print 'Accuracy on test set: %g' % p_test
 
-print "Program time:", time.time() - start_time, "seconds"
+print "Program run time:", time.time() - start_time, "seconds"
 
 
 
