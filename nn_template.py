@@ -91,15 +91,15 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
 
 def predict(Theta1, Theta2, X):
 	m = X.shape[0]
-	num_labels = size(Theta2,1)
+	num_labels = Theta2.shape[0]
 
-	h1 = sigmoid((c_[np.ones(m), X]) * np.transpose(Theta1)) 
-	h2 = sigmoid((c_[np.ones(m), h1]) * np.transpose(Theta2))
+	h1 = sigmoid(c_[np.ones(m), X].dot(np.transpose(Theta1))) 
+	h2 = sigmoid(c_[np.ones(m), h1].dot(np.transpose(Theta2)))
 	
 	#assign each row of output  to be max of each row of h2
 	return h2.max(1)
 
-
+sys.exit()
 # Neural Network script
 
 # Input: feature columns followed by dependent class column
@@ -161,7 +161,7 @@ Theta1 = (reshape(nn_params[:(hidden_layer_size*(input_layer_size+1))],(hidden_l
 	
 Theta2 = (reshape(nn_params[((hidden_layer_size*(input_layer_size+1))):],(num_labels, (hidden_layer_size+1))))
 
-
+p_train = predict(Theta1, Theta2, X)
 		
 			
 			
