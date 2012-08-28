@@ -110,7 +110,7 @@ def pred_accuracy(Theta1, Theta2, X, y):
 data = np.loadtxt('fisher_iris.csv', delimiter = ',')
 
 # shuffle rows
-#random.shuffle(data)
+random.shuffle(data)
 
 # separate into features and class
 X = array(data[:,:-1])
@@ -157,7 +157,7 @@ print 'fmin results:'
 
 #nn_params, cost, _, _, _  = op.fmin(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, xtol = 0.01, ftol = 0.01, maxiter = 500, full_output=1)
 
-nn_params, cost, _, _, _  = op.fmin_cg(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, gtol = 0.001, maxiter = 40, full_output=1)
+nn_params, cost, _, _, _  = op.fmin_cg(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, gtol = 0.001, maxiter = 50, full_output=1)
 	
 
 Theta1 = (reshape(nn_params[:(hidden_layer_size*(input_layer_size+1))],(hidden_layer_size,(input_layer_size+1))))
@@ -168,7 +168,7 @@ p_train = pred_accuracy(Theta1, Theta2, X, y)
 
 p_test = pred_accuracy(Theta1, Theta2, X_test, y_test)
 
-print '\n Accuracy on training set: %g' % p_train
+print '\nAccuracy on training set: %g' % p_train
 print 'Accuracy on test set: %g' % p_test
 		
 			
