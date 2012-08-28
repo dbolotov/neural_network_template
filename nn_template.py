@@ -89,7 +89,7 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
 
 
 
-def predict(Theta1, Theta2, X):
+def predict(Theta1, Theta2, X): #compute prediction of y 
 	m = X.shape[0]
 	num_labels = Theta2.shape[0]
 
@@ -97,9 +97,12 @@ def predict(Theta1, Theta2, X):
 	h2 = sigmoid(c_[np.ones(m), h1].dot(np.transpose(Theta2)))
 	
 	#assign each row of output  to be max of each row of h2
-	return h2.max(1)
+	return h2.argmax(1)+1
 
-sys.exit()
+def pred_accuracy(Theta1, Theta2, X, y):
+	p = predict(Theta1, Theta2, X)
+	return np.mean(p == y)*100 #find percentage of correct predictions
+
 # Neural Network script
 
 # Input: feature columns followed by dependent class column
@@ -132,11 +135,11 @@ hidden_layer_size = 40
 num_labels = unique(y).shape[0] #output layer
 
 # Initialize NN parameters
-#initial_Theta1 = randInitializeWeights(input_layer_size, hidden_layer_size)
-#initial_Theta2 = randInitializeWeights(hidden_layer_size, num_labels)
+initial_Theta1 = randInitializeWeights(input_layer_size, hidden_layer_size)
+initial_Theta2 = randInitializeWeights(hidden_layer_size, num_labels)
 
-initial_Theta1 = 0.5*ones((hidden_layer_size, 1+input_layer_size))
-initial_Theta2 = 0.5*ones((num_labels, 1+hidden_layer_size))
+#initial_Theta1 = 0.5*ones((hidden_layer_size, 1+input_layer_size))
+#initial_Theta2 = 0.5*ones((num_labels, 1+hidden_layer_size))
 
 
 # Unroll parameters
@@ -154,14 +157,19 @@ print 'fmin results:'
 
 #nn_params, cost, _, _, _  = op.fmin(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, xtol = 0.01, ftol = 0.01, maxiter = 500, full_output=1)
 
-nn_params, cost, _, _, _  = op.fmin_cg(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, gtol = 0.001, maxiter = 10, full_output=1)
+nn_params, cost, _, _, _  = op.fmin_cg(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, gtol = 0.001, maxiter = 40, full_output=1)
 	
 
 Theta1 = (reshape(nn_params[:(hidden_layer_size*(input_layer_size+1))],(hidden_layer_size,(input_layer_size+1))))
 	
 Theta2 = (reshape(nn_params[((hidden_layer_size*(input_layer_size+1))):],(num_labels, (hidden_layer_size+1))))
 
-p_train = predict(Theta1, Theta2, X)
+p_train = pred_accuracy(Theta1, Theta2, X, y)
+
+p_test = pred_accuracy(Theta1, Theta2, X_test, y_test)
+
+print '\n Accuracy on training set: %g' % p_train
+print 'Accuracy on test set: %g' % p_test
 		
 			
 			
