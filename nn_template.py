@@ -1,9 +1,7 @@
 #!/usr/local/EPD/bin/python
 #Filename: nn_template.py
 
-#Description
-
-
+#Description here
 
 #Code is based on ml-class.org, Ex.4.
 
