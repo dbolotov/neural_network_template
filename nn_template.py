@@ -5,7 +5,7 @@
 
 #Code is based on ml-class.org, Ex.4.
 
-import sys, numpy as np, scipy as sp
+import time, sys, numpy as np, scipy as sp
 from numpy import log, ones, c_, r_, array, e, reshape, random, sqrt, unique, zeros, eye
 from numpy import transpose as tr
 from scipy import optimize as op
@@ -103,6 +103,8 @@ def pred_accuracy(Theta1, Theta2, X, y):
 
 # Neural Network script
 
+start_time = time.time()
+
 # Input: feature columns followed by dependent class column
 
 data = np.loadtxt('fisher_iris.csv', delimiter = ',')
@@ -155,7 +157,7 @@ print 'fmin results:'
 
 #nn_params, cost, _, _, _  = op.fmin(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, xtol = 0.01, ftol = 0.01, maxiter = 500, full_output=1)
 
-nn_params, cost, _, _, _  = op.fmin_cg(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, gtol = 0.001, maxiter = 50, full_output=1)
+nn_params, cost, _, _, _  = op.fmin_cg(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, gtol = 0.001, maxiter = 5, full_output=1)
 	
 
 Theta1 = (reshape(nn_params[:(hidden_layer_size*(input_layer_size+1))],(hidden_layer_size,(input_layer_size+1))))
@@ -168,19 +170,8 @@ p_test = pred_accuracy(Theta1, Theta2, X_test, y_test)
 
 print '\nAccuracy on training set: %g' % p_train
 print 'Accuracy on test set: %g' % p_test
-		
-			
-			
-			
 
-
-
-
-
-
-
-
-
+print "Program time:", time.time() - start_time, "seconds"
 
 
 
