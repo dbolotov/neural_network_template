@@ -31,6 +31,10 @@ def randInitializeWeights(L_in, L_out):
 	#epsilon_init = float(sqrt(6))/sqrt(L_in + L_out)
 	return random.rand(L_out, 1 + L_in) * 2 * epsilon_init - epsilon_init
 
+def standardize(inp): #subtract mean, divide by standard deviation
+	return (inp-inp.mean(0))/inp.std(0)	
+
+
 def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X, y, lam):
 	
 	Theta1 = (reshape(nn_params[:(hidden_layer_size*(input_layer_size+1))],(hidden_layer_size,(input_layer_size+1))))
@@ -106,13 +110,17 @@ start_time = time.time()
 
 # Input: feature columns followed by dependent class column
 
-data = np.loadtxt('fisher_iris.csv', delimiter = ',')
+data = np.loadtxt('wine.csv', delimiter = ',')
 
 # shuffle rows
 random.shuffle(data)
 
 # separate into features and class
 X = array(data[:,:-1])
+
+# apply feature scaling to X 
+X = standardize(X)
+
 y = array(data[:,-1])
 y = reshape(y,(len(y),1)) #reshape into 1 by len(y) array
 
@@ -156,7 +164,7 @@ print 'fmin results:'
 
 #nn_params, cost, _, _, _  = op.fmin(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, xtol = 0.01, ftol = 0.01, maxiter = 500, full_output=1)
 
-nn_params, cost, _, _, _  = op.fmin_cg(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, gtol = 0.001, maxiter = 100, full_output=1)
+nn_params, cost, _, _, _  = op.fmin_cg(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, gtol = 0.001, maxiter = 50, full_output=1)
 	
 
 Theta1 = (reshape(nn_params[:(hidden_layer_size*(input_layer_size+1))],(hidden_layer_size,(input_layer_size+1))))
