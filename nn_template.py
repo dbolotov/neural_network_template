@@ -50,11 +50,9 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
 	y = y_new
 
 	a_1 = c_[ones((m,1)),X]
-	
 	z_2 = tr(Theta1.dot(tr(a_1)))
-	
-	a_2 = tr(sigmoid(Theta1.dot(tr(a_1))))
 
+	a_2 = tr(sigmoid(Theta1.dot(tr(a_1))))
 	a_2 = c_[ones((a_2.shape[0],1)), a_2]
 
 	a_3 = tr(sigmoid(Theta2.dot(tr(a_2))))
@@ -158,7 +156,7 @@ print 'fmin results:'
 
 #nn_params, cost, _, _, _  = op.fmin(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, xtol = 0.01, ftol = 0.01, maxiter = 500, full_output=1)
 
-nn_params, cost, _, _, _  = op.fmin_cg(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, gtol = 0.001, maxiter = 20, full_output=1)
+nn_params, cost, _, _, _  = op.fmin_cg(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, gtol = 0.001, maxiter = 100, full_output=1)
 	
 
 Theta1 = (reshape(nn_params[:(hidden_layer_size*(input_layer_size+1))],(hidden_layer_size,(input_layer_size+1))))
