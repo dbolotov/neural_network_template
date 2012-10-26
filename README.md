@@ -2,9 +2,9 @@
 
 
 ####Intro
-A 3-layer neural network template for classification, implemented in MATLAB and python.
+A 3-layer neural network template for classification using a continuous feature set, implemented in MATLAB and python.
 
-####Constraints
+####Dataset Constraints
 This template is suitable for data with continuous independent variables and a dependent variable designating 2 or more classes.
 
 Each data row must be complete (no missing values).
@@ -22,7 +22,7 @@ Weights are learned by minimizing a square error cost function with fmincg or fm
 
 Script splits input data file into training and test sets, and computes some performance metrics after the network is trained. These are test and training set prediction accuracy and confusion matrix.
 
-Code is based on Ex.4 of ml-class.org.
+Code is based on Ex.4 of [ml-class.org](http://ml-class.org).
 
 ####Datasets used
 [Fisher's Iris](http://archive.ics.uci.edu/ml/datasets/Iris "Iris")  
