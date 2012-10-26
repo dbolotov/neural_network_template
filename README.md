@@ -15,7 +15,7 @@ Classes must be designated with consecutive integers, starting from 1 (for examp
 Every class must be represented in the training set.
 Due to Octave/MATLAB syntax, '0' cannot be used to designate a class.
 
-####Notes
+###Notes
 Output layer uses sigmoid as activation function.
 
 Regression parameters are learned by minimizing a cost function with fmincg or fminunc (MATLAB/Octave) and fmin_cg (python).
@@ -24,22 +24,19 @@ Script splits input data file into training and test sets, and computes some per
 
 Code is based on Ex.4 of ml-class.org.
 
-Datasets used
---
+###Datasets used
 Fisher's Iris: http://archive.ics.uci.edu/ml/datasets/Iris
 
 Wine: http://archive.ics.uci.edu/ml/datasets/Wine
 
 Breast Cancer Wisconsin (Diagnostic): http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic)
 
-Dataset processing steps 
---
+###Dataset processing steps 
 Labels of "0" in these datasets have been replaced with non-zero values to accomodate MATLAB/Octave syntax.
 Classes in Wine dataset were relabeled to consecutive integers. The class column has been moved to the last column in the dataset.
 Classes in Breast Cancer dataset were relabeled to 1 (malignant) and 2 (benign). Class column has been moved to the end.
 
-Files
---
+###Files
 nn_template.py: python implementation script
 
 nn_template.m: MATLAB/Octave implementation script (working)
