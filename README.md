@@ -18,14 +18,14 @@ Due to Octave/MATLAB syntax, '0' cannot be used to designate a class.
 ###Notes
 Output layer uses sigmoid as activation function.
 
-Regression parameters are learned by minimizing a cost function with fmincg or fminunc (MATLAB/Octave) and fmin_cg (python).
+Weights are learned by minimizing a square error cost function with fmincg or fminunc (MATLAB/Octave) and fmin_cg (python).
 
 Script splits input data file into training and test sets, and computes some performance metrics after the network is trained. These are test and training set prediction accuracy and confusion matrix.
 
 Code is based on Ex.4 of ml-class.org.
 
 ###Datasets used
-Fisher's Iris: http://archive.ics.uci.edu/ml/datasets/Iris
+[Fisher's Iris](http://archive.ics.uci.edu/ml/datasets/Iris "Iris")
 
 Wine: http://archive.ics.uci.edu/ml/datasets/Wine
 
