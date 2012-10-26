@@ -18,13 +18,13 @@ Due to Octave/MATLAB syntax, '0' cannot be used to designate a class.
 ####Notes
 The sigmoid is used as activation function.
 
-Weights are learned by minimizing a square error cost function with fmincg or fminunc (MATLAB/Octave) and fmin_cg (python).
+Weights are learned by minimizing a square error cost function with fmincg or fminunc (MATLAB/Octave) and fmin\_cg (python).
 
 Script splits input data file into training and test sets, and computes some performance metrics after the network is trained. These are test and training set prediction accuracy and confusion matrix.
 
 The code is based on Ex.4 of [ml-class.org](http://ml-class.org).
 
-####Datasets used
+####Datasets used in development and testing
 [Fisher's Iris](http://archive.ics.uci.edu/ml/datasets/Iris)  
 
 [Wine](http://archive.ics.uci.edu/ml/datasets/Wine)  
@@ -39,7 +39,8 @@ Classes in Wine dataset were relabeled to consecutive integers. The class column
 Classes in Breast Cancer dataset were relabeled to 1 (malignant) and 2 (benign). Class column has been moved to the end.
 
 ####Files
-nn_template.py: python implementation script
+Python implementation script: nn\_template.py
 
-nn_template.m: MATLAB/Octave implementation script (working)
-sigmoid.m, sigmoidGradient.m, randInitializeWeights.m, nnCostFunction.m, fmincg.m, predict.m: functions used by main .m script
+MATLAB/Octave implementation script: nn\_template.m
+
+Functions used by main .m script: sigmoid.m, sigmoidGradient.m, randInitializeWeights.m, nnCostFunction.m, fmincg.m, predict.m
