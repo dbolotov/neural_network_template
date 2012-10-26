@@ -4,7 +4,7 @@
 ####Intro
 A 3-layer neural network template for classification using a continuous feature set, implemented in MATLAB and python.
 
-####Dataset Constraints
+####Constraints on input datasets
 This template is suitable for data with continuous independent variables and a dependent variable designating 2 or more classes.
 
 Each data row must be complete (no missing values).
@@ -25,11 +25,11 @@ Script splits input data file into training and test sets, and computes some per
 Code is based on Ex.4 of [ml-class.org](http://ml-class.org).
 
 ####Datasets used
-[Fisher's Iris](http://archive.ics.uci.edu/ml/datasets/Iris "Iris")  
+[Fisher's Iris](http://archive.ics.uci.edu/ml/datasets/Iris)  
 
-[Wine](http://archive.ics.uci.edu/ml/datasets/Wine "Wine")  
+[Wine](http://archive.ics.uci.edu/ml/datasets/Wine)  
 
-[Breast Cancer Wisconsin (Diagnostic)](http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic) "Wisconsin Breast Cancer")
+[Breast Cancer Wisconsin (Diagnostic)](http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic))
 
 ####Dataset processing steps
 #####Fisher's Iris 
