@@ -16,7 +16,7 @@ Every class must be represented in the training set.
 Due to Octave/MATLAB syntax, '0' cannot be used to designate a class.
 
 ###Notes
-Output layer uses sigmoid as activation function.
+The sigmoid is used as activation function.
 
 Weights are learned by minimizing a square error cost function with fmincg or fminunc (MATLAB/Octave) and fmin_cg (python).
 
@@ -27,9 +27,9 @@ Code is based on Ex.4 of ml-class.org.
 ###Datasets used
 [Fisher's Iris](http://archive.ics.uci.edu/ml/datasets/Iris "Iris")
 
-Wine: http://archive.ics.uci.edu/ml/datasets/Wine
+[Wine](http://archive.ics.uci.edu/ml/datasets/Wine "Wine")
 
-Breast Cancer Wisconsin (Diagnostic): http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic)
+[Breast Cancer Wisconsin (Diagnostic)](http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic) "Wisconsin Breast Cancer")
 
 ###Dataset processing steps 
 Labels of "0" in these datasets have been replaced with non-zero values to accomodate MATLAB/Octave syntax.
