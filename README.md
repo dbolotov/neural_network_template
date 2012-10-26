@@ -1,11 +1,11 @@
-#Neural Network Template
+##Neural Network Template
 
 
-##Intro
+###Intro
 A 3-layer neural network template for classification, implemented in MATLAB and python.
 
 ###Constraints
-Network is suitable for data with continuous independent variables and a dependent variable designating 2 or more classes.
+This template is suitable for data with continuous independent variables and a dependent variable designating 2 or more classes.
 
 Each data row must be complete (no missing values).
 
@@ -15,8 +15,7 @@ Classes must be designated with consecutive integers, starting from 1 (for examp
 Every class must be represented in the training set.
 Due to Octave/MATLAB syntax, '0' cannot be used to designate a class.
 
-Notes
---
+####Notes
 Output layer uses sigmoid as activation function.
 
 Regression parameters are learned by minimizing a cost function with fmincg or fminunc (MATLAB/Octave) and fmin_cg (python).
