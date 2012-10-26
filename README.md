@@ -29,7 +29,7 @@ The code is based on Ex.4 of [ml-class.org](http://ml-class.org).
 
 [Wine](http://archive.ics.uci.edu/ml/datasets/Wine)  
 
-[Breast Cancer Wisconsin (Diagnostic)](http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic)\)
+[Breast Cancer Wisconsin (Diagnostic)](http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic\))
 ####Dataset processing steps
 #####Fisher's Iris 
 Labels of "0" in these datasets have been replaced with non-zero values to accomodate MATLAB/Octave syntax.
