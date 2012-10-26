@@ -1,5 +1,5 @@
-Neural Network Template
-==
+#Neural Network Template
+
 
 Intro
 --
@@ -27,11 +27,13 @@ Script splits input data file into training and test sets, and computes some per
 
 Code is based on Ex.4 of ml-class.org.
 
-Datasets used:
+Datasets used
 --
-*Fisher's Iris: http://archive.ics.uci.edu/ml/datasets/Iris
-*Wine: http://archive.ics.uci.edu/ml/datasets/Wine
-*Breast Cancer Wisconsin (Diagnostic): http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic)
+Fisher's Iris: http://archive.ics.uci.edu/ml/datasets/Iris
+
+Wine: http://archive.ics.uci.edu/ml/datasets/Wine
+
+Breast Cancer Wisconsin (Diagnostic): http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic)
 
 Dataset processing steps 
 --
