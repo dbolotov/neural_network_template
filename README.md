@@ -22,15 +22,14 @@ Weights are learned by minimizing a square error cost function with fmincg or fm
 
 Script splits input data file into training and test sets, and computes some performance metrics after the network is trained. These are test and training set prediction accuracy and confusion matrix.
 
-Code is based on Ex.4 of [ml-class.org](http://ml-class.org).
+The code is based on Ex.4 of [ml-class.org](http://ml-class.org).
 
 ####Datasets used
 [Fisher's Iris](http://archive.ics.uci.edu/ml/datasets/Iris)  
 
 [Wine](http://archive.ics.uci.edu/ml/datasets/Wine)  
 
-[Breast Cancer Wisconsin (Diagnostic)](http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic))
-
+[Breast Cancer Wisconsin (Diagnostic)](http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic)\)
 ####Dataset processing steps
 #####Fisher's Iris 
 Labels of "0" in these datasets have been replaced with non-zero values to accomodate MATLAB/Octave syntax.
