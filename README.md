@@ -1,12 +1,10 @@
 #Neural Network Template
 
 
-Intro
---
+##Intro
 A 3-layer neural network template for classification, implemented in MATLAB and python.
 
-Constraints
---
+###Constraints
 Network is suitable for data with continuous independent variables and a dependent variable designating 2 or more classes.
 
 Each data row must be complete (no missing values).
