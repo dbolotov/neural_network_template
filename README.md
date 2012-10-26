@@ -1,10 +1,10 @@
-##Neural Network Template
+###Neural Network Template
 
 
-###Intro
+####Intro
 A 3-layer neural network template for classification, implemented in MATLAB and python.
 
-###Constraints
+####Constraints
 This template is suitable for data with continuous independent variables and a dependent variable designating 2 or more classes.
 
 Each data row must be complete (no missing values).
@@ -15,7 +15,7 @@ Classes must be designated with consecutive integers, starting from 1 (for examp
 Every class must be represented in the training set.
 Due to Octave/MATLAB syntax, '0' cannot be used to designate a class.
 
-###Notes
+####Notes
 The sigmoid is used as activation function.
 
 Weights are learned by minimizing a square error cost function with fmincg or fminunc (MATLAB/Octave) and fmin_cg (python).
@@ -24,22 +24,22 @@ Script splits input data file into training and test sets, and computes some per
 
 Code is based on Ex.4 of ml-class.org.
 
-###Datasets used
+####Datasets used
 [Fisher's Iris](http://archive.ics.uci.edu/ml/datasets/Iris "Iris")  
 
 [Wine](http://archive.ics.uci.edu/ml/datasets/Wine "Wine")  
 
 [Breast Cancer Wisconsin (Diagnostic)](http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic) "Wisconsin Breast Cancer")
 
-###Dataset processing steps
-####Fisher's Iris 
+####Dataset processing steps
+#####Fisher's Iris 
 Labels of "0" in these datasets have been replaced with non-zero values to accomodate MATLAB/Octave syntax.
-####Wine
+#####Wine
 Classes in Wine dataset were relabeled to consecutive integers. The class column has been moved to the last column in the dataset.
-####Wisconsin Breast Cancer
+#####Wisconsin Breast Cancer
 Classes in Breast Cancer dataset were relabeled to 1 (malignant) and 2 (benign). Class column has been moved to the end.
 
-###Files
+####Files
 nn_template.py: python implementation script
 
 nn_template.m: MATLAB/Octave implementation script (working)
