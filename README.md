@@ -1,12 +1,12 @@
 Neural Network Template
 ==
 
+Intro
+--
 A 3-layer neural network template for classification, implemented in MATLAB and python.
---
 
-Constraints:
+Constraints
 --
-
 Network is suitable for data with continuous independent variables and a dependent variable designating 2 or more classes.
 
 Each data row must be complete (no missing values).
@@ -17,7 +17,8 @@ Classes must be designated with consecutive integers, starting from 1 (for examp
 Every class must be represented in the training set.
 Due to Octave/MATLAB syntax, '0' cannot be used to designate a class.
 
-Notes:
+Notes
+--
 Output layer uses sigmoid as activation function.
 
 Regression parameters are learned by minimizing a cost function with fmincg or fminunc (MATLAB/Octave) and fmin_cg (python).
@@ -27,9 +28,10 @@ Script splits input data file into training and test sets, and computes some per
 Code is based on Ex.4 of ml-class.org.
 
 Datasets used:
-	Fisher's Iris: http://archive.ics.uci.edu/ml/datasets/Iris
-	Wine: http://archive.ics.uci.edu/ml/datasets/Wine
-	Breast Cancer Wisconsin (Diagnostic): http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic)
+--
+*Fisher's Iris: http://archive.ics.uci.edu/ml/datasets/Iris
+*Wine: http://archive.ics.uci.edu/ml/datasets/Wine
+*Breast Cancer Wisconsin (Diagnostic): http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic)
 
 Dataset processing steps: 
 	Labels of "0" in these datasets have been replaced with non-zero values to accomodate MATLAB/Octave syntax.
