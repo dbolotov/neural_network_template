@@ -33,13 +33,14 @@ Datasets used:
 *Wine: http://archive.ics.uci.edu/ml/datasets/Wine
 *Breast Cancer Wisconsin (Diagnostic): http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic)
 
-Dataset processing steps: 
-	Labels of "0" in these datasets have been replaced with non-zero values to accomodate MATLAB/Octave syntax.
-	Classes in Wine dataset were relabeled to consecutive integers. The class column has been moved to the last column in the dataset.
-	Classes in Breast Cancer dataset were relabeled to 1 (malignant) and 2 (benign). Class column has been moved to the end.
+Dataset processing steps 
+--
+Labels of "0" in these datasets have been replaced with non-zero values to accomodate MATLAB/Octave syntax.
+Classes in Wine dataset were relabeled to consecutive integers. The class column has been moved to the last column in the dataset.
+Classes in Breast Cancer dataset were relabeled to 1 (malignant) and 2 (benign). Class column has been moved to the end.
 
-Files:
-
+Files
+--
 nn_template.py: python implementation script
 
 nn_template.m: MATLAB/Octave implementation script (working)
