@@ -32,8 +32,11 @@ def randInitializeWeights(L_in, L_out):
 	return random.rand(L_out, 1 + L_in) * 2 * epsilon_init - epsilon_init
 
 def standardize(inp): #subtract mean, divide by standard deviation
-	return (inp-inp.mean(0))/inp.std(0)	
-
+	#output mean and stdev for spot-checking test cases later
+	mn = inp.mean(0)
+	std = inp.std(0) 
+	stand = (inp-mn)/std
+	return mn,std,stand
 
 def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X, y, lam):
 	
@@ -96,7 +99,7 @@ def predict(Theta1, Theta2, X): #compute prediction of y
 	h1 = sigmoid(c_[np.ones(m), X].dot(np.transpose(Theta1))) 
 	h2 = sigmoid(c_[np.ones(m), h1].dot(np.transpose(Theta2)))
 	
-	#assign each row of output  to be max of each row of h2
+	#assign each row of output to be max of each row of h2
 	y_hat = h2.argmax(1)+1
 	return reshape(y_hat, (len(y_hat),1))
 
@@ -113,13 +116,13 @@ start_time = time.time()
 data = np.loadtxt('wdbc_data.csv', delimiter = ',')
 
 # shuffle rows
-random.shuffle(data)
+#random.shuffle(data)
 
 # separate into features and class
 X = array(data[:,:-1])
 
 # apply feature scaling to X 
-X = standardize(X)
+mn,std,X = standardize(X)
 
 y = array(data[:,-1])
 y = reshape(y,(len(y),1)) #reshape into 1 by len(y) array
