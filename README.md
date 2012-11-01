@@ -1,8 +1,16 @@
 ###Neural Network Template
 
 
-####Intro
-A 3-layer neural network template for classification using a continuous feature set, implemented in MATLAB and python.
+####Description
+This is a 3-layer neural network template for classification using a continuous feature set, implemented in MATLAB and python.
+
+The sigmoid is used as activation function.
+
+Weights are learned by minimizing a square error cost function with fmincg or fminunc (MATLAB/Octave) and fmin\_cg (python).
+
+Script splits input data file into training and test sets, and computes some performance metrics after the network is trained. These are test and training set prediction accuracy and confusion matrix.
+
+The code is based on Ex.4 of [ml-class.org](http://ml-class.org).
 
 ####Constraints on input datasets
 This template is suitable for data with continuous independent variables and a dependent variable designating 2 or more classes.
@@ -15,14 +23,6 @@ Classes must be designated with consecutive integers, starting from 1 (for examp
 Every class must be represented in the training set.
 Due to Octave/MATLAB syntax, '0' cannot be used to designate a class.
 
-####Notes
-The sigmoid is used as activation function.
-
-Weights are learned by minimizing a square error cost function with fmincg or fminunc (MATLAB/Octave) and fmin\_cg (python).
-
-Script splits input data file into training and test sets, and computes some performance metrics after the network is trained. These are test and training set prediction accuracy and confusion matrix.
-
-The code is based on Ex.4 of [ml-class.org](http://ml-class.org).
 
 ####Datasets used in development and testing
 [Fisher's Iris](http://archive.ics.uci.edu/ml/datasets/Iris)  
@@ -30,7 +30,8 @@ The code is based on Ex.4 of [ml-class.org](http://ml-class.org).
 [Wine](http://archive.ics.uci.edu/ml/datasets/Wine)  
 
 [Breast Cancer Wisconsin (Diagnostic)](http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic\))
-####Dataset processing steps
+
+####Data processing steps
 #####Fisher's Iris 
 Labels of "0" in these datasets have been replaced with non-zero values to accomodate MATLAB/Octave syntax.
 #####Wine
