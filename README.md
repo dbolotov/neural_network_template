@@ -8,7 +8,7 @@ The sigmoid is used as activation function.
 
 Weights are learned by minimizing a square error cost function with fmincg or fminunc (MATLAB/Octave) and fmin\_cg (python).
 
-Script splits input data file into training and test sets, and computes some performance metrics after the network is trained. These are test and training set prediction accuracy and confusion matrix.
+The script splits input data into training and test sets, and computes some performance metrics after the network is trained (test and training set prediction accuracy and confusion matrix).
 
 The code is based on Ex.4 of [ml-class.org](http://ml-class.org).
 
