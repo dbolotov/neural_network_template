@@ -4,11 +4,9 @@
 ####Description
 This is a 3-layer neural network template for classification using a continuous feature set, implemented in MATLAB and python.
 
-The sigmoid is used as activation function.
-
 Weights are learned by minimizing a square error cost function with fmincg or fminunc (MATLAB/Octave) and fmin\_cg (python).
 
-The script splits input data into training and test sets, and computes some performance metrics after the network is trained (test and training set prediction accuracy and confusion matrix).
+The script splits input data into training and test sets, and computes some performance metrics after training (test and training set prediction accuracy and confusion matrix).
 
 The code is based on Ex.4 of [ml-class.org](http://ml-class.org).
 
@@ -17,12 +15,11 @@ This template is suitable for data with continuous independent variables and a d
 
 Each data row must be complete (no missing values).
 
-Features must be numerical (continuous).	
+Features must be numerical (continuous, not categorical).	
 
-Classes must be designated with consecutive integers, starting from 1 (for example, {1,2,3,4} but not {1,2,4}). 
+Classes must be designated with consecutive integers, starting from 1 (for example, {1,2,3,4} but not {1,2,4}). Due to Octave/MATLAB syntax, '0' cannot be used to designate a class.
+
 Every class must be represented in the training set.
-Due to Octave/MATLAB syntax, '0' cannot be used to designate a class.
-
 
 ####Datasets used in development and testing
 [Fisher's Iris](http://archive.ics.uci.edu/ml/datasets/Iris)  
@@ -33,11 +30,11 @@ Due to Octave/MATLAB syntax, '0' cannot be used to designate a class.
 
 ####Data processing steps
 #####Fisher's Iris 
-Labels of "0" in these datasets have been replaced with non-zero values to accomodate MATLAB/Octave syntax.
+Labels of 1,2,3 have been assigned to setosa, versicolor, and virginica Iris classes, respectively.
 #####Wine
-Classes in Wine dataset were relabeled to consecutive integers. The class column has been moved to the last column in the dataset.
+The class column has been moved to the last column in the dataset.
 #####Wisconsin Breast Cancer
-Classes in Breast Cancer dataset were relabeled to 1 (malignant) and 2 (benign). Class column has been moved to the end.
+Classes were relabeled to 1 (malignant) and 2 (benign). Class column has been moved to the end.
 
 ####Files
 Python implementation script: nn\_template.py
