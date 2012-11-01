@@ -28,7 +28,7 @@ Every class must be represented in the training set.
 
 [Breast Cancer Wisconsin (Diagnostic)](http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic\))
 
-####Data processing steps
+####Dataset processing notes
 #####Fisher's Iris 
 Labels of 1,2,3 have been assigned to setosa, versicolor, and virginica Iris classes, respectively.
 #####Wine
