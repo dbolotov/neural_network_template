@@ -113,7 +113,7 @@ start_time = time.time()
 
 # Input: feature columns followed by dependent class column
 
-data = np.loadtxt('wdbc_data.csv', delimiter = ',')
+data = np.loadtxt('wine.csv', delimiter = ',')
 
 # shuffle rows
 #random.shuffle(data)
