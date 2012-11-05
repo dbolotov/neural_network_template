@@ -113,10 +113,10 @@ start_time = time.time()
 
 # Input: feature columns followed by dependent class column
 
-data = np.loadtxt('wdbc_data.csv', delimiter = ',')
+data = np.loadtxt('vertebral_column_3c.csv', delimiter = ',')
 
 # shuffle rows
-#random.shuffle(data)
+random.shuffle(data)
 
 # separate into features and class
 X = array(data[:,:-1])
