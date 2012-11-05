@@ -113,7 +113,11 @@ start_time = time.time()
 
 # Input: feature columns followed by dependent class column
 
+<<<<<<< HEAD
 data = np.loadtxt('vertebral_column_3c.csv', delimiter = ',')
+=======
+data = np.loadtxt('wine.csv', delimiter = ',')
+>>>>>>> f8fded60c09f586b1346742377b79e2fabbaba24
 
 # shuffle rows
 random.shuffle(data)
