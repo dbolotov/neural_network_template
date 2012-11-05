@@ -28,6 +28,8 @@ Every class must be represented in the training set.
 
 [Breast Cancer Wisconsin (Diagnostic)](http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic\))
 
+[Vertebral Column](http://archive.ics.uci.edu/ml/datasets/Vertebral+Column)
+
 ####Dataset processing notes
 #####Fisher's Iris 
 Labels of 1,2,3 have been assigned to setosa, versicolor, and virginica Iris classes, respectively.
@@ -35,7 +37,8 @@ Labels of 1,2,3 have been assigned to setosa, versicolor, and virginica Iris cla
 The class column has been moved to the last column in the dataset.
 #####Wisconsin Breast Cancer
 Classes were relabeled to 1 (malignant) and 2 (benign). Class column has been moved to the end.
-
+#####Vertebral Column
+The 3-class dataset was used. The classes {DH, SL, NO} were relabeled to {1,2,3}, respectively.
 ####Files
 Python implementation script: nn\_template.py
 
