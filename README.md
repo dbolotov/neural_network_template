@@ -2,24 +2,22 @@
 
 
 ####Description
-This is a 3-layer neural network template for classification using a continuous feature set, implemented in MATLAB and python.
+This is a 3-layer neural network for classification using a set of continuous features, implemented in MATLAB and python.
 
-Weights are learned by minimizing a square error cost function with fmincg or fminunc (MATLAB/Octave) and fmin\_cg (python).
+The logistic sigmoid is used as the activation function. Weights are learned by minimizing a square error cost function with fmincg or fminunc (MATLAB/Octave) and fmin\_cg (python).
 
 The script splits input data into training and test sets, and computes some performance metrics after training (test and training set prediction accuracy and confusion matrix).
 
 The code is based on Ex.4 of [ml-class.org](http://ml-class.org).
 
 ####Constraints on input datasets
-This template is suitable for data with continuous independent variables and a dependent variable designating 2 or more classes.
+This template is suitable for data with a dependent variable designating 2 or more classes. The code works for numeric (not categorical) features.
 
-Each data row must be complete (no missing values).
+The class column must be the last column in the input.
 
-Features must be numerical (continuous, not categorical).	
+Each data row must be complete (no missing values), and every class must be represented in the training set.
 
 Classes must be designated with consecutive integers, starting from 1 (for example, {1,2,3,4} but not {1,2,4}). Due to Octave/MATLAB syntax, '0' cannot be used to designate a class.
-
-Every class must be represented in the training set.
 
 ####Datasets used in development and testing
 [Fisher's Iris](http://archive.ics.uci.edu/ml/datasets/Iris)  
