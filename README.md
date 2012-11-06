@@ -11,15 +11,15 @@ The scripts split input data into training and test sets, and compute performanc
 The code is based on Ex.4 of [ml-class.org](http://ml-class.org).
 
 ####Script steps
-Read in .csv data file < /br>
-Randomize rows in dataset < /br>
-Define features (X) and class (y) < /br>
-Standardize features (subtract mean, divide by st dev) < /br>
-Split into training and test sets < /br>
-Define NN layers < /br>
-Initialize NN weights < /br>
-Minimize cost function < /br>
-Compute performance metrics < /br>
+Read in .csv data file <br />
+Randomize rows in dataset <br />
+Define features (X) and class (y) <br />
+Standardize features (subtract mean, divide by st dev) <br />
+Split into training and test sets <br />
+Define NN layers <br />
+Initialize NN weights <br />
+Minimize cost function <br />
+Compute performance metrics <br />
 
 
 
