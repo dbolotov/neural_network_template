@@ -1,12 +1,8 @@
 % NN_TEMPLATE is a template neural network for classification.
+% Description:
+%	Perform classification for a multi-class dataset using a regularized 3-layer neural network.
+%	Learn parameters with fmincg.m or fminunc.m (uncomment respective sections to use one or the other method)
 %
-% Perform classification for a multi-class dataset using a regularized 3-layer neural network.
-% Learn parameters with fmincg.m or fminunc.m (uncomment respective sections to use one or the other method)
-%
-% Features must be numerical.	
-% Classes must be designated with consecutive integers, starting from 1 (Ex: {1,2,3,4} but not {1,2,4}). 
-% Every class must be represented in training set.
-% Due to Octave/MATLAB syntax, '0' cannot be used to designate a class.
 %
 % Overview:
 %	Read in comma-delimited data file (without header)
@@ -19,15 +15,6 @@
 % Functions used: sigmoid.m, sigmoidGradient.m, randInitializeWeights.m, nnCostFunction.m, fmincg.m, predict.m
 %
 % Code based on ml-class.org Ex.4
-%
-% Datasets used:
-%	Fisher's Iris: http://archive.ics.uci.edu/ml/datasets/Iris
-%	Wine: http://archive.ics.uci.edu/ml/datasets/Wine
-%	Glass Identification: http://archive.ics.uci.edu/ml/datasets/Glass+Identification
-%
-%	Dataset processing steps: labels of "0" in these datasets have been replaced with non-zero values 
-%	to accomodate MATLAB/Octave syntax. Classes in Wine dataset were relabeled to consecutive integers.
-%	The class column has been moved to the last column in the dataset.
 
 
 %load data
