@@ -30,6 +30,8 @@ Every class must be represented in the training set.
 
 [Vertebral Column](http://archive.ics.uci.edu/ml/datasets/Vertebral+Column)
 
+[Ionosphere](http://archive.ics.uci.edu/ml/datasets/Ionosphere)
+
 ####Dataset processing notes
 #####Fisher's Iris 
 Labels of 1,2,3 have been assigned to setosa, versicolor, and virginica Iris classes, respectively.
@@ -38,7 +40,10 @@ The class column has been moved to the last column in the dataset.
 #####Wisconsin Breast Cancer
 Classes were relabeled to 1 (malignant) and 2 (benign). Class column has been moved to the end.
 #####Vertebral Column
-The 3-class dataset was used. The classes {DH, SL, NO} were relabeled to {1,2,3}, respectively.
+The 3-class dataset was used. The classes {DH, SL, NO} were relabeled as {1,2,3}, respectively.
+#####Ionosphere
+The 2nd feature column was removed, as all entries are zero. The classes {g,b} were relabeled as {1,2}, respectively.
+
 ####Files
 Python implementation script: nn\_template.py
 
