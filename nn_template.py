@@ -127,7 +127,7 @@ mn,std,X = standardize(X)
 y = array(data[:,-1])
 y = reshape(y,(len(y),1)) #reshape into 1 by len(y) array
 
-train_frac = 0.85 #fraction of data to use for training
+train_frac = 0.70 #fraction of data to use for training
 
 # Split input file into training and test files
 test_rows = int(round(X.shape[0] * (1 - train_frac))) #num of rows in test set
@@ -168,7 +168,7 @@ print 'fmin results:'
 
 #nn_params, cost, _, _, _  = op.fmin(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, xtol = 0.01, ftol = 0.01, maxiter = 500, full_output=1)
 
-nn_params, cost, _, _, _  = op.fmin_cg(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, gtol = 0.001, maxiter = 10, full_output=1)
+nn_params, cost, _, _, _  = op.fmin_cg(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, gtol = 0.001, maxiter = 40, full_output=1)
 	
 
 Theta1 = (reshape(nn_params[:(hidden_layer_size*(input_layer_size+1))],(hidden_layer_size,(input_layer_size+1))))
