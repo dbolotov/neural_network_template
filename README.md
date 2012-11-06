@@ -33,11 +33,11 @@ Each data row must be complete (no missing values), and every class must be repr
 Classes must be designated with consecutive integers, starting from 1 (for example, {1,2,3,4} but not {1,2,4}). Due to Octave/MATLAB syntax, '0' cannot be used to designate a class.
 
 ####Datasets used in development and testing
-[Fisher's Iris](http://archive.ics.uci.edu/ml/datasets/Iris) <br />
-[Wine](http://archive.ics.uci.edu/ml/datasets/Wine) <br />
-[Breast Cancer Wisconsin (Diagnostic)](http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic\)) <br />
-[Vertebral Column](http://archive.ics.uci.edu/ml/datasets/Vertebral+Column) <br />
-[Ionosphere](http://archive.ics.uci.edu/ml/datasets/Ionosphere) <br />
+[Fisher's Iris](http://archive.ics.uci.edu/ml/datasets/Iris)<br />
+[Wine](http://archive.ics.uci.edu/ml/datasets/Wine)<br />
+[Breast Cancer Wisconsin (Diagnostic)](http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic\))<br />
+[Vertebral Column](http://archive.ics.uci.edu/ml/datasets/Vertebral+Column)<br />
+[Ionosphere](http://archive.ics.uci.edu/ml/datasets/Ionosphere)<br />
 
 ####Dataset processing notes
 Fisher's Iris: The Iris classes {setosa, versicolor, virginica} were relabeled to {1,2,3}, respectively.
