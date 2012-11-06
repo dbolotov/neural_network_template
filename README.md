@@ -34,13 +34,9 @@ Classes must be designated with consecutive integers, starting from 1 (for examp
 
 ####Datasets used in development and testing
 [Fisher's Iris](http://archive.ics.uci.edu/ml/datasets/Iris)  
-
 [Wine](http://archive.ics.uci.edu/ml/datasets/Wine)  
-
 [Breast Cancer Wisconsin (Diagnostic)](http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic\))
-
 [Vertebral Column](http://archive.ics.uci.edu/ml/datasets/Vertebral+Column)
-
 [Ionosphere](http://archive.ics.uci.edu/ml/datasets/Ionosphere)
 
 ####Dataset processing notes
