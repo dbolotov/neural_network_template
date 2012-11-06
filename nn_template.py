@@ -141,13 +141,14 @@ m = X.shape[0]
 
 # NN layer sizes
 input_layer_size = X.shape[1]
-hidden_layer_size = 40
+hidden_layer_size = 10
 num_labels = unique(y).shape[0] #output layer
 
 # Initialize NN parameters
 initial_Theta1 = randInitializeWeights(input_layer_size, hidden_layer_size)
 initial_Theta2 = randInitializeWeights(hidden_layer_size, num_labels)
 
+#non-random initalization for testing:
 #initial_Theta1 = 0.5*ones((hidden_layer_size, 1+input_layer_size))
 #initial_Theta2 = 0.5*ones((num_labels, 1+hidden_layer_size))
 
@@ -167,7 +168,7 @@ print 'fmin results:'
 
 #nn_params, cost, _, _, _  = op.fmin(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, xtol = 0.01, ftol = 0.01, maxiter = 500, full_output=1)
 
-nn_params, cost, _, _, _  = op.fmin_cg(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, gtol = 0.001, maxiter = 20, full_output=1)
+nn_params, cost, _, _, _  = op.fmin_cg(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, gtol = 0.001, maxiter = 30, full_output=1)
 	
 
 Theta1 = (reshape(nn_params[:(hidden_layer_size*(input_layer_size+1))],(hidden_layer_size,(input_layer_size+1))))
