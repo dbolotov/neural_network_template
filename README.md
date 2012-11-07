@@ -40,12 +40,11 @@ Classes must be designated with consecutive integers, starting from 1 (for examp
 [Ionosphere](http://archive.ics.uci.edu/ml/datasets/Ionosphere)<br />
 
 ####Dataset processing notes
-Fisher's Iris: The Iris classes {setosa, versicolor, virginica} were relabeled to {1,2,3}, respectively.
-
+Fisher's Iris: The Iris classes {setosa, versicolor, virginica} were relabeled to {1,2,3}.
 Wine: the class column has been moved to the last column in the dataset.<br />
-Wisconsin Breast Cancer: the classes {malignant, benign} were relabeled to {1,2}, respectively. Class column has been moved to the end.<br />
-Vertebral Column: the 3-class dataset was used. The classes {DH, SL, NO} were relabeled as {1,2,3}, respectively.<br />
-Ionosphere: the 2nd feature column was removed, as all entries are zero. The classes {g,b} were relabeled as {1,2}, respectively.<br />
+Wisconsin Breast Cancer: the classes {malignant, benign} were relabeled to {1,2}. Class column has been moved to the end.<br />
+Vertebral Column: the 3-class dataset was used. The classes {DH, SL, NO} were relabeled as {1,2,3}.<br />
+Ionosphere: the 2nd feature column was removed, as all entries are zero. The classes {g,b} were relabeled as {1,2}.<br />
 
 ####Files
 Python implementation script: nn\_template.py
