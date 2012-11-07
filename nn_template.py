@@ -84,13 +84,12 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
 
 	#Unroll gradients
 	grad = tr(c_[Theta1_grad.swapaxes(1,0).reshape(1,-1), Theta2_grad.swapaxes(1,0).reshape(1,-1)])
-
+	
+	#return statement for function testing:
 	#return Theta1,Theta2, y, a_1, z_2, d_3, a_3, J, grad, Theta1_grad, Theta2_grad
+	
 	#optimize.fmin expects a single value, so cannot return grad
-	return J #,grad
-
-
-
+	return J 
 
 def predict(Theta1, Theta2, X): #compute prediction of y 
 	m = X.shape[0]
@@ -111,23 +110,26 @@ def pred_accuracy(Theta1, Theta2, X, y):
 
 start_time = time.time()
 
-# Input: feature columns followed by dependent class column
+# Some parameters
+train_frac = 0.70 #fraction of data to use for training
+lam = 1.0 #learning rate
+hidden_layer_size = 10 #number of units in hidden layer
 
+# Input: feature columns followed by dependent class column
 data = np.loadtxt('ionosphere.csv', delimiter = ',')
 
 # shuffle rows
 random.shuffle(data)
 
-# separate into features and class
+# separate into feature columns
 X = array(data[:,:-1])
 
 # apply feature scaling to X 
 mn,std,X = standardize(X)
 
+# get class column
 y = array(data[:,-1])
 y = reshape(y,(len(y),1)) #reshape into 1 by len(y) array
-
-train_frac = 0.70 #fraction of data to use for training
 
 # Split input file into training and test files
 test_rows = int(round(X.shape[0] * (1 - train_frac))) #num of rows in test set
@@ -137,11 +139,8 @@ y_test = y[:test_rows] #test set
 X = X[test_rows:,:] #training set
 y = y[test_rows:] #training set
 
-m = X.shape[0]
-
-# NN layer sizes
+# NN input and output layer sizes
 input_layer_size = X.shape[1]
-hidden_layer_size = 10
 num_labels = unique(y).shape[0] #output layer
 
 # Initialize NN parameters
@@ -157,13 +156,13 @@ initial_Theta2 = randInitializeWeights(hidden_layer_size, num_labels)
 initial_nn_params = np.append(initial_Theta1.flatten(1), initial_Theta2.flatten(1))
 initial_nn_params = reshape(initial_nn_params,(len(initial_nn_params),)) #flatten into 1-d array
 
-# Implement backprop and train network
+
+# Find and print initial cost:
+J_init = nnCostFunction(initial_nn_params,input_layer_size,hidden_layer_size,num_labels,X,y,lam)
+print 'Initial cost: ' + str(J_init)
+
+# Implement backprop and train network, run fmin
 print 'Training Neural Network...'
-
-lam = 1.0
-
-#sys.exit()
-# Run fmin and print results
 print 'fmin results:'
 
 #nn_params, cost, _, _, _  = op.fmin(lambda t: nnCostFunction(t, input_layer_size, hidden_layer_size, num_labels, X, y, lam), initial_nn_params, xtol = 0.01, ftol = 0.01, maxiter = 500, full_output=1)
