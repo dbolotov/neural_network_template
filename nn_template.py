@@ -116,7 +116,8 @@ lam = 1.0 #learning rate
 hidden_layer_size = 10 #number of units in hidden layer
 
 # Input: feature columns followed by dependent class column
-data = np.loadtxt('ionosphere.csv', delimiter = ',')
+# data = np.loadtxt('ionosphere.csv', delimiter = ',')
+data = np.loadtxt('fisher_iris.csv', delimiter = ',')
 
 # shuffle rows
 random.shuffle(data)
