@@ -14,8 +14,8 @@ from nn_helper_functions import *
 start_time = time.time()
 
 
-# X_full,y_full = data_preprocess('datasets/wdbc_data.csv')
-X_full,y_full = data_preprocess('dataset_07.csv')
+X_full,y_full = data_preprocess('datasets/wdbc_data.csv')
+# X_full,y_full = data_preprocess('dataset_07.csv')
 
 X,y,X_test,y_test = split_data(X_full, y_full, train_frac = 0.70)
 
