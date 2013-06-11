@@ -4,7 +4,7 @@
 ####Description
 This is a 3-layer neural network for classification using a set of continuous features, implemented in MATLAB and python.
 
-The logistic sigmoid is used as the activation function. Weights are learned by minimizing a square error cost function with fmincg or fminunc (MATLAB/Octave) and fmin\_cg (python). The network is regularized.
+Logistic sigmoid is used as the activation function. Weights are learned by minimizing a square error cost function with fmincg or fminunc (MATLAB/Octave) and fmin\_cg (python). The network is regularized.
 
 The scripts split input data into training and test sets, and compute performance metrics after training (test and training set prediction accuracy and confusion matrix).
 
@@ -39,7 +39,7 @@ Classes must be designated with consecutive integers, starting from 1 (for examp
 [Vertebral Column](http://archive.ics.uci.edu/ml/datasets/Vertebral+Column)<br />
 [Ionosphere](http://archive.ics.uci.edu/ml/datasets/Ionosphere)<br />
 
-####Dataset processing notes
+####Some processing notes for datasets included in repo
 Fisher's Iris: The Iris classes {setosa, versicolor, virginica} were relabeled to {1,2,3}.
 Wine: the class column has been moved to the last column in the dataset.<br />
 Wisconsin Breast Cancer: the classes {malignant, benign} were relabeled to {1,2}. Class column has been moved to the end.<br />
@@ -47,7 +47,7 @@ Vertebral Column: the 3-class dataset was used. The classes {DH, SL, NO} were re
 Ionosphere: the 2nd feature column was removed, as all entries are zero. The classes {g,b} were relabeled as {1,2}.<br />
 
 ####Files
-Python implementation script: nn\_template.py
+Python implementation script and helper functions: nn\_template.py, nn\_helper\_functions.py
 
 MATLAB/Octave implementation script: nn\_template.m
 
