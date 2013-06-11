@@ -4,10 +4,11 @@
 #Functions used in the main nn_template.py script
 
 
-import time, sys, numpy as np, scipy as sp
-from numpy import log, ones, c_, r_, array, e, reshape, random, sqrt, unique, zeros, eye
-from numpy import transpose as tr
+import itertools, time, sys, numpy as np, scipy as sp
+from numpy import log, ones, c_, r_, array, e, reshape, random, sqrt, unique, zeros, eye, transpose as tr
+# from numpy import transpose as tr
 from scipy import optimize as op
+
 
 def sigmoid(z):
 	''' (number array) -> number array
@@ -111,66 +112,6 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
 	return J
 
 
-def predict(Theta1, Theta2, X):
-	'''
-
-	Return prediction of y
-	'''
-	m = X.shape[0]
-	num_labels = Theta2.shape[0]
-
-	h1 = sigmoid(c_[np.ones(m), X].dot(np.transpose(Theta1))) 
-	h2 = sigmoid(c_[np.ones(m), h1].dot(np.transpose(Theta2)))
-	
-	#assign each row of output to be max of each row of h2
-	y_hat = h2.argmax(1)+1
-	return reshape(y_hat, (len(y_hat),1))
-
-
-def pred_accuracy(Theta1, Theta2, X, y):
-	'''
-
-	Return prediction accuracy (percentage of examples classified correctly)
-	'''
-	p = predict(Theta1, Theta2, X)
-	return np.mean(p == y)*100 
-
-
-# def data_preprocess(data_filename):
-# 	'''
-
-# 	Given the name of .csv data file, return training and test sets as numpy arrays.
-# 	The sets are normalized, shuffled and split according to train_frac.
-# 	'''
-
-# 	train_frac = 0.70 #fraction of data to use for training
-
-# 	data = np.loadtxt(data_filename, delimiter = ',')	# Input: feature columns followed by dependent class column
-
-# 	random.shuffle(data)		# shuffle rows
-
-# 	X = array(data[:,:-1])		# separate into feature columns
-
-# 	mn,std,X = standardize(X)	# apply feature scaling to X 
-
-
-# 	y = array(data[:,-1])		# get class column
-# 	y = reshape(y,(len(y),1)) 	#reshape into 1 by len(y) array
-
-# 	# Split input file into training and test files
-# 	test_rows = int(round(X.shape[0] * (1 - train_frac))) #num of rows in test set
-# 	X_test = X[:test_rows, :] #test set
-# 	y_test = y[:test_rows] #test set
-
-# 	X = X[test_rows:,:] #training set
-# 	y = y[test_rows:] #training set
-
-# 	return X,y,X_test,y_test
-
-
-
-
-
 
 def data_preprocess(data_filename):
 	'''
@@ -209,11 +150,6 @@ def split_data(X_full, y_full, train_frac = 0.70):
 	y = y_full[test_rows:] #training set
 
 	return X,y,X_test,y_test
-
-
-
-
-
 
 
 def nn_train(X,y,lam = 1.0, hidden_layer_size = 10):
@@ -257,4 +193,42 @@ def nn_train(X,y,lam = 1.0, hidden_layer_size = 10):
 		
 	Theta2 = (reshape(nn_params[((hidden_layer_size*(input_layer_size+1))):],(num_labels, (hidden_layer_size+1))))
 
-	return Theta1, Theta2	
+	return Theta1, Theta2
+
+
+#Functions for measuring performance
+
+def predict(Theta1, Theta2, X):
+	'''
+
+	Return prediction of y given the features and neural network parameters
+	'''
+	m = X.shape[0]
+	num_labels = Theta2.shape[0]
+
+	h1 = sigmoid(c_[np.ones(m), X].dot(np.transpose(Theta1))) 
+	h2 = sigmoid(c_[np.ones(m), h1].dot(np.transpose(Theta2)))
+	
+	#assign each row of output to be max of each row of h2
+	y_hat = h2.argmax(1)+1
+	return reshape(y_hat, (len(y_hat),1))
+
+
+def pred_accuracy(Theta1, Theta2, X, y):
+	'''
+
+	Return prediction accuracy (percentage of examples classified correctly)
+	'''
+	p = predict(Theta1, Theta2, X)
+	return np.mean(p == y)*100 
+
+def confusion_matrix(y_true,y_pred):
+	'''(numpy array, numpy array) -> numpy array
+
+	Returns confusion matrix given true and predicted class values
+	'''
+	classes = list(set(y_true.flat))
+	n = len(classes)
+
+	cm = np.array([zip(y_true,y_pred).count(x) for x in itertools.product(classes,repeat=2)]).reshape(n,n)
+	return cm				
