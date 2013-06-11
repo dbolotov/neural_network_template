@@ -16,18 +16,9 @@ start_time = time.time()
 
 X_full,y_full = data_preprocess('datasets/fisher_iris.csv')
 
+X,y,X_test,y_test = split_data(X_full, y_full, train_frac = 0.70)
 
-# Split input file into training and test files
-train_frac = 0.70
-test_rows = int(round(X_full.shape[0] * (1 - train_frac))) #num of rows in test set
-X_test = X_full[:test_rows, :] #test set
-y_test = y_full[:test_rows] #test set
 
-X = X_full[test_rows:,:] #training set
-y = y_full[test_rows:] #training set
-
-print type(X)
-print X.shape
 
 Theta1, Theta2 = nn_train(X,y, lam=1, hidden_layer_size = 10)
 

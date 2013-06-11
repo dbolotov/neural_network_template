@@ -195,10 +195,20 @@ def data_preprocess(data_filename):
 	return X,y
 
 
+def split_data(X_full, y_full, train_frac = 0.70):
+	'''
 
+	Given full feature set and class set, return split training and test sets
+	'''
+	# Split input file into training and test files
+	test_rows = int(round(X_full.shape[0] * (1 - train_frac))) #num of rows in test set
+	X_test = X_full[:test_rows, :] #test set
+	y_test = y_full[:test_rows] #test set
 
+	X = X_full[test_rows:,:] #training set
+	y = y_full[test_rows:] #training set
 
-
+	return X,y,X_test,y_test
 
 
 
