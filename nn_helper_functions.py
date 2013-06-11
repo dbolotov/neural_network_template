@@ -18,6 +18,7 @@ def sigmoid(z):
 	g = 1./(1 + e**(-z))
 	return g
 
+
 def sigmoidGradient(z):
 	''' (number array) -> number array
 	
@@ -29,6 +30,7 @@ def sigmoidGradient(z):
 	f = 1./(1 + e**(-z))
 	return f*(1-f)
 
+
 def randInitializeWeights(L_in, L_out):
 	''' (number arrays) -> number arrays
 
@@ -37,6 +39,7 @@ def randInitializeWeights(L_in, L_out):
 	epsilon_init = 0.12
 	#epsilon_init = float(sqrt(6))/sqrt(L_in + L_out)
 	return np.random.rand(L_out, 1 + L_in) * 2 * epsilon_init - epsilon_init
+
 
 def standardize(inp):
 	''' (number array) -> number,number,number array
@@ -48,6 +51,7 @@ def standardize(inp):
 	std = inp.std(0) 
 	stand = (inp-mn)/std
 	return mn,std,stand
+
 
 def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X, y, lam):
 	'''
@@ -122,6 +126,7 @@ def predict(Theta1, Theta2, X):
 	y_hat = h2.argmax(1)+1
 	return reshape(y_hat, (len(y_hat),1))
 
+
 def pred_accuracy(Theta1, Theta2, X, y):
 	'''
 
@@ -131,7 +136,48 @@ def pred_accuracy(Theta1, Theta2, X, y):
 	return np.mean(p == y)*100 
 
 
+# def data_preprocess(data_filename):
+# 	'''
+
+# 	Given the name of .csv data file, return training and test sets as numpy arrays.
+# 	The sets are normalized, shuffled and split according to train_frac.
+# 	'''
+
+# 	train_frac = 0.70 #fraction of data to use for training
+
+# 	data = np.loadtxt(data_filename, delimiter = ',')	# Input: feature columns followed by dependent class column
+
+# 	random.shuffle(data)		# shuffle rows
+
+# 	X = array(data[:,:-1])		# separate into feature columns
+
+# 	mn,std,X = standardize(X)	# apply feature scaling to X 
+
+
+# 	y = array(data[:,-1])		# get class column
+# 	y = reshape(y,(len(y),1)) 	#reshape into 1 by len(y) array
+
+# 	# Split input file into training and test files
+# 	test_rows = int(round(X.shape[0] * (1 - train_frac))) #num of rows in test set
+# 	X_test = X[:test_rows, :] #test set
+# 	y_test = y[:test_rows] #test set
+
+# 	X = X[test_rows:,:] #training set
+# 	y = y[test_rows:] #training set
+
+# 	return X,y,X_test,y_test
+
+
+
+
+
+
 def data_preprocess(data_filename):
+	'''
+
+	Given the name of .csv data file, return X (features) and y (class) arrays.
+	The data is normalized and shuffled.
+	'''
 
 	train_frac = 0.70 #fraction of data to use for training
 
@@ -143,26 +189,28 @@ def data_preprocess(data_filename):
 
 	mn,std,X = standardize(X)	# apply feature scaling to X 
 
-
 	y = array(data[:,-1])		# get class column
 	y = reshape(y,(len(y),1)) 	#reshape into 1 by len(y) array
 
-	# Split input file into training and test files
-	test_rows = int(round(X.shape[0] * (1 - train_frac))) #num of rows in test set
-	X_test = X[:test_rows, :] #test set
-	y_test = y[:test_rows] #test set
-
-	X = X[test_rows:,:] #training set
-	y = y[test_rows:] #training set
-
-	return X,y,X_test,y_test
+	return X,y
 
 
-def nn_train(X,y):
 
-	lam = 1.0 #learning rate
-	hidden_layer_size = 10 #number of units in hidden layer
 
+
+
+
+
+
+
+
+
+
+def nn_train(X,y,lam = 1.0, hidden_layer_size = 10):
+	'''
+
+	Train neural network and return parameters Theta1, Theta2
+	'''
 		
 	# NN input and output layer sizes
 	input_layer_size = X.shape[1]
