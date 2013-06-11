@@ -9,22 +9,23 @@ import time, sys, numpy as np, scipy as sp
 from numpy import log, ones, c_, r_, array, e, reshape, random, sqrt, unique, zeros, eye
 from numpy import transpose as tr
 from scipy import optimize as op
+from nn_helper_functions import *
 
 #sys.exit()
 
 # Define functions
 
-def sigmoid(z):
-	g = 1./(1 + e**(-z))
-	return g
+# def sigmoid(z):
+# 	g = 1./(1 + e**(-z))
+# 	return g
 
-def sigmoidGradient(z):
-	#must convert to array first
-	if type(z) != np.ndarray:
-		z = array([z])
-	f = 1./(1 + e**(-z))
-	#return f*(np.ones(f.shape[0]) - f)
-	return f*(1-f)
+# def sigmoidGradient(z):
+# 	#must convert to array first
+# 	if type(z) != np.ndarray:
+# 		z = array([z])
+# 	f = 1./(1 + e**(-z))
+# 	#return f*(np.ones(f.shape[0]) - f)
+# 	return f*(1-f)
 
 def randInitializeWeights(L_in, L_out):
 	epsilon_init = 0.12
