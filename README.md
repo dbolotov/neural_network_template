@@ -25,14 +25,14 @@ Compute performance metrics <br />
 
 ####Usage for python script
 
-'''python
+```python
 python nn_template.py fisher_iris.csv
-'''
+```
 
 
 ####Example output for python script
 
-'''
+```
 Script started at 10:39:04
 
 Using fisher_iris.csv
@@ -56,7 +56,7 @@ Confusion matrix:
  [ 0  0 14]]
 
 Total run time: 7.6800 seconds
-'''
+```
 
 ####Constraints on input data
 
