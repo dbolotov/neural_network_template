@@ -10,6 +10,7 @@
 
 * Python code is adapted from the MATLAB version, and uses numpy and scipy libraries.
 
+
 ####Script steps
 Read in .csv data file <br />
 Randomize rows in dataset <br />
@@ -22,6 +23,40 @@ Minimize cost function <br />
 Compute performance metrics <br />
 
 
+####Usage for python script
+
+'''python
+python nn_template.py fisher_iris.csv
+'''
+
+
+####Example output for python script
+
+'''
+Script started at 10:39:04
+
+Using fisher_iris.csv
+
+Initial cost: 2.14566322791
+Training Neural Network...
+fmin results:
+Warning: Maximum number of iterations has been exceeded
+         Current function value: 0.723884
+         Iterations: 40
+         Function evaluations: 8245
+         Gradient evaluations: 97
+
+Accuracy on training set: 96.1905
+
+Accuracy on test set: 95.5556
+
+Confusion matrix:
+[[15  0  0]
+ [ 0 14  2]
+ [ 0  0 14]]
+
+Total run time: 7.6800 seconds
+'''
 
 ####Constraints on input data
 
@@ -35,12 +70,14 @@ Compute performance metrics <br />
 
 * Comma-separated format is expected.
 
+
 ####Datasets used in development and testing
 [Fisher's Iris](http://archive.ics.uci.edu/ml/datasets/Iris)<br />
 [Wine](http://archive.ics.uci.edu/ml/datasets/Wine)<br />
 [Breast Cancer Wisconsin (Diagnostic)](http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic\))<br />
 [Vertebral Column](http://archive.ics.uci.edu/ml/datasets/Vertebral+Column)<br />
 [Ionosphere](http://archive.ics.uci.edu/ml/datasets/Ionosphere)<br />
+
 
 ####Some processing notes for datasets used
 
@@ -49,6 +86,7 @@ Compute performance metrics <br />
 * Wisconsin Breast Cancer: the classes {malignant, benign} were relabeled to {1,2}. Class column has been moved to the end.<br />
 * Vertebral Column: the 3-class dataset was used. The classes {DH, SL, NO} were relabeled as {1,2,3}.<br />
 * Ionosphere: the 2nd feature column was removed, as all entries are zero. The classes {g,b} were relabeled as {1,2}.<br />
+
 
 ####Files
 
