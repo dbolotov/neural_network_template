@@ -1,8 +1,9 @@
 #!/usr/local/EPD/bin/python
-#Filename: nn_helper_functions.py
+#Filename: nn_hf.py
 
-#Functions used in the main nn_template.py script
-
+'''
+Helper functions used in the main nn_template.py script
+'''
 
 import itertools, time, sys, numpy as np, scipy as sp
 from numpy import log, ones, c_, r_, array, e, reshape, random, sqrt, unique, zeros, eye, transpose as tr
