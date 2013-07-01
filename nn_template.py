@@ -8,8 +8,7 @@
 #Code is based on ml-class.org, Ex.4.
 
 
-#from nn_helper_functions import *
-import nnhf,time,sys
+import nn_hf,time,sys
 
 start_time = time.time()
 print "\nScript started at %s \n" % time.strftime("%H:%M:%S",time.localtime(start_time))
