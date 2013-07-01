@@ -90,7 +90,7 @@ Total run time: 7.6800 seconds
 
 ####Files
 
-* Python implementation script and helper functions: nn\_template.py, nn\_helper\_functions.py
+* Python implementation script and helper functions: nn\_template.py, nn\_hf.py
 
 * MATLAB/Octave implementation script: nn\_template.m
 
